@@ -8,11 +8,11 @@ This portfolio has been set up to hold a few personal Python projects to help me
 - Learning to generate, manipulate, analyse and report data on Microsoft Excel using Python 3
 
 ### Projects
-**- Project 1: Sample data generator**   
+- **Project 1: Sample data generator**   
 This project seeks to generate random data given a set of lists that provide some basic categories. Basic Python techniques such as input, print and control flow will be used. This input will be stored in a text file     
     
-**- Project 2: Graphical User Interface**    
+- **Project 2: Graphical User Interface**    
 This project will be used to learn how to create a simple GUI on Python 3 by using TKinter    
 
-**- Project 3: Python 3 and Microsoft Excel integration**     
+- **Project 3: Python 3 and Microsoft Excel integration**     
 This project is meant to be an introduction to data analysis in Python 3 and how to report report that outcome on Microsoft Excel
