@@ -1,5 +1,4 @@
-# Purpose
----
+# Purpose <br>
 This portfolio has been set up to hold a few personal Python projects to help me learn Python 3. I am interested in replacing VBA Excel with Python to obtain, manipulate, analyse and report information.
 
 ## Learning outcomes
