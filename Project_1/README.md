@@ -4,7 +4,7 @@
 This projects was design to facilitate learning activities. It focuses on utilising basic programming techniques to implement input, output, control flow, GUI development and finally integrating Python 3 and Microsoft Excel.
 
 ## Stages <br>
-1. *Generation of data*
+1. *Generation of data*<br?
 This part of the project focuses on generating some sample data that will be manipulated at a later stage.
 
 2. *Creation of a basic GUI* <br>
