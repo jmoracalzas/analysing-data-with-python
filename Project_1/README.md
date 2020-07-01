@@ -34,7 +34,7 @@ The system must
 - **Relationships:** Rules **define** InterimData **builds** Outcome
 - **Responsibilities:** *Rules* (holds input, generates data), *InterimData* (holds data, generates report), *Outcome* (holds report, disseminates report)
 
-### Class diagrams/definition
+### Class diagrams
 
 |**Rules**||
 |:---|:---|
