@@ -21,7 +21,7 @@ This final block of the project will be an introduction to manipulating data in 
 ### Requirements
 The system must
 - allow the user to input some parameters
-- generate sample data based on the user's input
+- generate sample data based on user input
 - analyse the sample data and output the results
 
 ### User stories
