@@ -39,8 +39,9 @@ The system must
 |**Rules**||
 |:---|:---|
 |**Attributes**|**Responsibilities**|
-|- setInputx|+ getInputx|
-| | + generateData()|
+|- noYears integer|+ getInputx|
+|- expLines integer | + generateData()|
+|- incLines integer | |
 <br>
 
 |**InterimData**||
