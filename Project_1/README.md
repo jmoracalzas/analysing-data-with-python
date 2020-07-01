@@ -36,9 +36,9 @@ The system must
 
 ### Class diagrams/definition
 
-|:Name:|
+|Name|
 |---|
-|:Attributes||:Responsibilities|
+|Attributes|Responsibilities|
 
 
 
