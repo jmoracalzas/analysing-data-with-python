@@ -18,3 +18,26 @@ This final block of the project will be an introduction to manipulating data in 
 2. Microsoft Excel
 
 ## Documentation (based on Unified Modeling Language) <br>
+### Requirements
+The system must
+- allow the user to input some parameters
+- generate sample data based on the user's input
+- analyse the sample data and output the results
+
+### User stories
+- As an analyst, I want to set the rules to generate the sample data so that the information is useful to other people
+- As a finance professional, I want to choose the type of analysis the software will generate so that I can tailor the outcome
+- As a finance professional, I want to easily understand the information provided so that I can use it to generate specific reports
+
+### Conceptual model
+- **Potential objects:** Rules, Data and Outcome
+- **Relationships:** Rules **define** Data **builds** Outcome
+- **Responsibilities:** *Rules* (holds input, generates data), *Data*(holds data, generates report), *Outcome* (holds report, disseminates report)
+
+### Class diagrams/definition
+
+|:Name:|
+---
+
+
+
