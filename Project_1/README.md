@@ -53,3 +53,4 @@ The system must
 |**Attributes**|**Responsibilities**|
 |- setOutcome|+ generateReport()|
 | | + sendReport()|
+
