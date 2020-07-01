@@ -30,15 +30,26 @@ The system must
 - As a finance professional, I want to easily understand the information provided so that I can use it to generate specific reports
 
 ### Conceptual model
-- **Potential objects:** Rules, Data and Outcome
-- **Relationships:** Rules **define** Data **builds** Outcome
-- **Responsibilities:** *Rules* (holds input, generates data), *Data*(holds data, generates report), *Outcome* (holds report, disseminates report)
+- **Potential objects:** Rules, InterimData and Outcome
+- **Relationships:** Rules **define** InterimData **builds** Outcome
+- **Responsibilities:** *Rules* (holds input, generates data), *InterimData* (holds data, generates report), *Outcome* (holds report, disseminates report)
 
 ### Class diagrams/definition
 
-|Name||
+|**Rules**||
 |:---|:---|
-|Attributes|Responsibilities|
+|**Attributes**|**Responsibilities**|
+|- setInputx|+ getInputx|
+| | + generateData()|
 
+|**InterimData**||
+|:---|:---|
+|**Attributes**|**Responsibilities**|
+|- setInterimData|+ getInterimData()|
+|- setReportSettings  | + getReportSettings()|
 
-
+|**Outcome**||
+|:---|:---|
+|**Attributes**|**Responsibilities**|
+|- setOutcome|+ generateReport()|
+| | + sendReport()|
