@@ -1,7 +1,7 @@
 # Project 1: Analysing data with Python 3 and Microsoft Excel  
 
 ## Introduction <br>
-This projects was design to facilitate learning activities. It focuses on utilising basic programming techniques to implement input, output, control flow, GUI development and finally integrating Python 3 and Microsoft Excel.
+This projects was designed to facilitate learning activities. It focuses on utilising basic programming techniques to implement input, output, control flow, GUI development and finally integrating Python 3 and Microsoft Excel.
 
 ## Stages <br>
 1. *Generation of data*<br>
