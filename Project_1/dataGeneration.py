@@ -21,5 +21,4 @@ def main():
     values = Rules()
     print(values)
 
-
 if __name__=="__main__":    main()
