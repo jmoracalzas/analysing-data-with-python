@@ -38,7 +38,7 @@ The system must
 
 |:Name:|
 |---|
-|:Attributes|:Responsibilities|
+|:Attributes||:Responsibilities|
 
 
 
