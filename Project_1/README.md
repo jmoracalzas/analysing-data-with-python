@@ -41,12 +41,14 @@ The system must
 |**Attributes**|**Responsibilities**|
 |- setInputx|+ getInputx|
 | | + generateData()|
+<br>
 
 |**InterimData**||
 |:---|:---|
 |**Attributes**|**Responsibilities**|
 |- setInterimData|+ getInterimData()|
 |- setReportSettings  | + getReportSettings()|
+<br>
 
 |**Outcome**||
 |:---|:---|
