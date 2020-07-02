@@ -51,7 +51,7 @@ The system must
 |- setNoIncEntries --> integer | + getInterimData()                      |
 
 This class will require three CSV files: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)<br>
-
+<br>
 
 |**Outcome**                   |                    |
 |:---                          |:---                |
