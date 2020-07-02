@@ -36,24 +36,25 @@ The system must
 
 ### Class diagrams
 
-|**Rules**||
-|:---|:---|
-|**Attributes**|**Responsibilities**|
-|- noYears integer|+ getInputx|
-|- expLines integer | + generateData()|
-|- incLines integer | |
+|**Rules**                 |                                  |
+|:---                      |:---                              |
+|**Attributes**            |**Responsibilities**              |
+|- setNoYears --> integer  | + getNoYears(years)              |
+|- setExpLines --> integer | + getNoIncEntries(years,incLines)|
+|- setIncLines --> integer | + getNoExpEntries(years,expLines)|
 <br>
 
-|**InterimData**||
-|:---|:---|
-|**Attributes**|**Responsibilities**|
-|- setInterimData|+ getInterimData()|
-|- setReportSettings  | + getReportSettings()|
+|**InterimData**               |                                         |
+|:---                          |:---                                     |
+|**Attributes**                |**Responsibilities**                     |
+|- setNoExpEntries --> integer | - generateInterimData(expLines,incLines)|
+|- setNoIncEntries --> integer | + getInterimData()                      |
+
+This class will require three CSV files: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)
 <br>
 
-|**Outcome**||
-|:---|:---|
-|**Attributes**|**Responsibilities**|
-|- setOutcome|+ generateReport()|
-| | + sendReport()|
-
+|**Outcome**      |                    |
+|:---             |:---                |
+|**Attributes**   |**Responsibilities**|
+|- setColumns     |- generateReport()  |
+|                 | + exportReport()   |
