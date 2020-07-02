@@ -36,12 +36,12 @@ The system must
 
 ### Class diagrams
 
-|**Rules**                     |                                  |
-|:---                          |:---                              |
-|**Attributes**                |**Responsibilities**              |
-|- setNoYears --> integer      | + getNoYears(years)              |
-|- setExpLines --> integer     | + getNoIncEntries(years,incLines)|
-|- setIncLines --> integer     | + getNoExpEntries(years,expLines)|
+|**Rules**                     |                                   |
+|:---                          |:---                               |
+|**Attributes**                |**Responsibilities**               |
+|- setNoYears --> integer      | + getNumYears(years)              |
+|- setExpLines --> integer     | + getNumIncEntries(years,incLines)|
+|- setIncLines --> integer     | + getNumExpEntries(years,expLines)|
 <br>
 
 |**InterimData**               |                                         |
