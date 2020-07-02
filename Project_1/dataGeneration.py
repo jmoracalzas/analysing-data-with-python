@@ -10,15 +10,24 @@ from datetime import date
 
 class Rules:
     def __init__(self):
-        self.__noYears = int(input("How many years does the data need to reflect?"))
-        self.__expLines = int(input("How many lines of expenditure would you like to generate every month:"))
-        self.__incLines =  int(input("How many lines of income would you like to generate every month:"))
+        self.__setNoYears = int(input("How many years does the data need to reflect?"))
+        self.setExpLines = int(input("How many lines of expenditure would you like to generate every month:"))
+        self.setIncLines =  int(input("How many lines of income would you like to generate every month:"))
+
+    def getNoYears(self):
+
+        return years
 
 def main():
-    #thisDay = date.today()
-    #currentYear = thisDay.year
     
-    values = Rules()
-    print(values)
+    NewRules = Rules()
+    print(NewRules._Rules__seetNoYears)
+    #print(NewRules.getNoYears())
+    #print(NewRules.getNoYears())
+    #print(NewRules._Rules__setNoYears)
+    
+    
+    
 
 if __name__=="__main__":    main()
+
