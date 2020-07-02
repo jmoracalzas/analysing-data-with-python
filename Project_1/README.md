@@ -17,7 +17,7 @@ This final block of the project will be an introduction to manipulating data in 
 1. Python 3
 2. Microsoft Excel
 
-## Documentation (based on Unified Modeling Language) <br>
+## Documentation <br>
 ### Requirements
 The system must
 - allow the user to input some parameters
