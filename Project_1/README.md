@@ -36,12 +36,12 @@ The system must
 
 ### Class diagrams
 
-|**Rules**                 |                                  |
-|:---                      |:---                              |
-|**Attributes**            |**Responsibilities**              |
-|- setNoYears --> integer  | + getNoYears(years)              |
-|- setExpLines --> integer | + getNoIncEntries(years,incLines)|
-|- setIncLines --> integer | + getNoExpEntries(years,expLines)|
+|**Rules**                     |                                  |
+|:---                          |:---                              |
+|**Attributes**                |**Responsibilities**              |
+|- setNoYears --> integer      | + getNoYears(years)              |
+|- setExpLines --> integer     | + getNoIncEntries(years,incLines)|
+|- setIncLines --> integer     | + getNoExpEntries(years,expLines)|
 <br>
 
 |**InterimData**               |                                         |
@@ -53,8 +53,8 @@ The system must
 This class will require three CSV files: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)
 <br>
 
-|**Outcome**      |                    |
-|:---             |:---                |
-|**Attributes**   |**Responsibilities**|
-|- setColumns     |- generateReport()  |
-|                 | + exportReport()   |
+|**Outcome**                   |                    |
+|:---                          |:---                |
+|**Attributes**                |**Responsibilities**|
+|- setColumns                  |- generateReport()  |
+|                              | + exportReport()   |
