@@ -39,9 +39,9 @@ The system must
 |**Rules**                     |                                   |
 |:---                          |:---                               |
 |**Attributes**                |**Responsibilities**               |
-|- setNoYears --> integer      | + getNumYears(years)              |
-|- setExpLines --> integer     | + getNumIncEntries(years,incLines)|
-|- setIncLines --> integer     | + getNumExpEntries(years,expLines)|
+|+ setNoYears --> integer      | + getNumYears(years)              |
+|+ setExpLines --> integer     | + getNumIncEntries(years,incLines)|
+|+ setIncLines --> integer     | + getNumExpEntries(years,expLines)|
 <br>
 
 |**InterimData**               |                                         |
