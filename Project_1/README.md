@@ -5,7 +5,7 @@ This projects was designed to facilitate learning activities. It focuses on util
 
 ## Stages <br>
 1. *Generation of data*<br>
-This part of the project focuses on generating some sample data that will be manipulated at a later stage.
+This part of the project focuses on generating some sample data that will be manipulated at a later stage. This data will be stored in CSV files.
 
 2. *Creation of a basic GUI* <br>
 This section of the project will be used to explore the Tkinter module to create a basic GUI.
