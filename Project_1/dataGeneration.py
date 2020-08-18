@@ -3,7 +3,9 @@
 from sys import path
 
 path.append("./customClasses")
-from dataGenClasses import Rules, interimData
+from customClasses.dataGenClasses import Rules, interimData
+
+# dataGenClasses import Rules, interimData
 
 # This part of the code will :
 # - generate a list of transactions (income and expenditure) based the input obtained from the user
