@@ -1,22 +1,24 @@
-#!usr/bin/env python3
-import customDataGenClasses as customClasses
+#!usr/bin/env python
+
+from sys import path
+
+path.append("./customClasses")
+from dataGenClasses import Rules, interimData
 
 # This part of the code will :
-# it will generate a list of transactions (income and expenditure) based the input obtained from the user
-# it will store the dataset
+# - generate a list of transactions (income and expenditure) based the input obtained from the user
+# - will store the dataset
 
 
 def main():
-    newRules = customClasses.Rules()
 
-    # Generating the total number of income and expenditure lines
-    totalIncEntries = newRules.getNumIncEntries(
-        years=newRules.setNoYears, lines=newRules.setIncLines
+    years = input("How many years does the data need to reflect? ")
+    incLines = input("How many lines of income would you like to generate each month? ")
+    expLines = input(
+        "How many lines of expenditure would you like to generate every month? "
     )
 
-    totalExpLines = newRules.getNumExpEntries(
-        years=newRules.setNoYears, lines=newRules.setExpLines
-    )
+    setOne = interimData(years, incLines, expLines)
 
 
 if __name__ == "__main__":
