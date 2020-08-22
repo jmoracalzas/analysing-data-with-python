@@ -32,16 +32,16 @@ The system must
 ### Conceptual model
 - **Potential objects:** Rules, InterimData and Outcome
 - **Relationships:** Rules **define** InterimData **builds** Outcome
-- **Responsibilities:** *Rules* (holds input, generates data), *InterimData* (holds data, generates report), *Outcome* (holds report, disseminates report)
+- **Responsibilities:** *Rules* (holds input, generates data), *InterimData* (holds data, generates dataset), *Outcome* (holds dataset, disseminates report)
 
 ### Class diagrams
 
 |**Rules**                     |                                   |
 |:---                          |:---                               |
 |**Attributes**                |**Responsibilities**               |
-|+ setNoYears --> integer      | + getNumYears(years)              |
-|+ setExpLines --> integer     | + getNumIncEntries(years,incLines)|
-|+ setIncLines --> integer     | + getNumExpEntries(years,expLines)|
+|- setNoYears --> integer      | + getNumYears(years)              |
+|- setExpLines --> integer     | + getNumIncEntries(years,incLines)|
+|- setIncLines --> integer     | + getNumExpEntries(years,expLines)|
 <br>
 
 |**InterimData**               |                                         |
