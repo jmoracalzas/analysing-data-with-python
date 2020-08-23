@@ -39,9 +39,11 @@ The system must
 |**Rules**                     |                                   |
 |:---                          |:---                               |
 |**Attributes**                |**Responsibilities**               |
-|+ setNoYears --> integer      | + getNumYears(years)              |
-|+ setExpLines --> integer     | + getNumIncEntries(years,incLines)|
-|+ setIncLines --> integer     | + getNumExpEntries(years,expLines)|
+|- setNoYears --> integer      | + getNumYears(years)              |
+|- setExpLines --> integer     | + getNumIncEntries(years,incLines)|
+|- setIncLines --> integer     | + getNumExpEntries(years,expLines)|
+|+ startDate --> date          | + generateReportingDates
+|
 <br>
 
 |**InterimData**               |                                         |
@@ -50,7 +52,7 @@ The system must
 |- setNoExpEntries --> integer | - generateInterimData(expLines,incLines)|
 |- setNoIncEntries --> integer | + getInterimData()                      |
 
-This class will require three CSV files: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)<br>
+TThe interimDataset will feed from the following information: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)<br>
 <br>
 
 |**Outcome**                   |                    |
