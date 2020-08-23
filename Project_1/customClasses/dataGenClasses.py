@@ -28,11 +28,11 @@ class Rules:
         calendar = tuple(
             [
                 [
-                    str(int(self.startDate.day))
+                    str(self.startDate.day)
                     + "/"
                     + str(i + 1)
                     + "/"
-                    + str(int((self.startDate - timedelta(days=365 * j)).year))
+                    + str((self.startDate - timedelta(days=365 * j)).year)
                     for i in range(12)
                 ]
                 for j in range(self.__setNoYears)
