@@ -40,17 +40,17 @@ The system must
 |:---                          |:---                               |
 |**Attributes**                |**Responsibilities**               |
 |- setNoYears --> integer      | + getNumYears(years)              |
-|- setExpLines --> integer     | + getNumIncEntries(years,incLines)|
-|- setIncLines --> integer     | + getNumExpEntries(years,expLines)|
-|+ startDate --> date          | + generateReportingDates
-|
+|- setExpLines --> integer     | + getIncLinesMonth()              |
+|- setIncLines --> integer     | + getExpLinesMonth()              |
+|+ startDate --> date          | + generateReportingDates()        |
+
 <br>
 
 |**InterimData**               |                                         |
 |:---                          |:---                                     |
 |**Attributes**                |**Responsibilities**                     |
-|- setNoExpEntries --> integer | - generateInterimData(expLines,incLines)|
-|- setNoIncEntries --> integer | + getInterimData()                      |
+|                              | - generateIncData()|
+|                              | + getInterimData()                      |
 
 TThe interimDataset will feed from the following information: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)<br>
 <br>
