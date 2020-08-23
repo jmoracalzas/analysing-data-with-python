@@ -1,4 +1,5 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
+from datetime import date, timedelta
 
 
 class Rules:
@@ -9,6 +10,7 @@ class Rules:
         self.__setNoYears = int(years)
         self.__setIncLines = int(incLines)
         self.__setExpLines = int(expLines)
+        self.startDate = date.today()
 
     def getNumYears(self):
         return self.__setNoYears
@@ -21,6 +23,23 @@ class Rules:
         expLines = self.__setNoYears * 12 * self.__setExpLines
         return expLines
 
+    def generateReportingDates(self):
+        # To generate the reporting periods based on the user input
+        calendar = tuple(
+            [
+                [
+                    str(int(self.startDate.day))
+                    + "/"
+                    + str(i + 1)
+                    + "/"
+                    + str(int((self.startDate - timedelta(days=365 * j)).year))
+                    for i in range(12)
+                ]
+                for j in range(self.__setNoYears)
+            ]
+        )
+        return calendar
+
 
 class interimData(Rules):
     def __init__(self, years, incLines, expLines):
@@ -30,7 +49,7 @@ class interimData(Rules):
 
 
 def main():
-    print("Hello World")
+    print()
 
 
 if __name__ == "__main__":
