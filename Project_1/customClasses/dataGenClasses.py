@@ -46,6 +46,16 @@ class interimData(Rules):
         super().__init__(years, incLines, expLines)
         self.__setNoIncEntries = self.getNumIncEntries()
         self.__setNoExpEntries = self.getNumExpEntries()
+        self.__expenditureType = (
+            "Purchase of materials",
+            "Rent",
+            "Electricity",
+            "Salaries",
+        )
+        self.__incomeType = ["Sale of products", "Rendering of services"]
+
+    def generateDataSet(self, incLines, expLines):
+        pass
 
 
 def main():
