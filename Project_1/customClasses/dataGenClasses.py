@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
+from random import choice
 
 
 class Rules:
@@ -15,13 +16,11 @@ class Rules:
     def getNumYears(self):
         return self.__setNoYears
 
-    def getNumIncEntries(self):  # total number of income lines
-        incLines = self.__setNoYears * 12 * self.__setIncLines
-        return incLines
+    def getIncLinesMonth(self):
+        return self.__setIncLines
 
-    def getNumExpEntries(self):  # total number of expenditure lines
-        expLines = self.__setNoYears * 12 * self.__setExpLines
-        return expLines
+    def getExpLinesMonth(self):
+        return self.__setExpLines
 
     def generateReportingDates(self):
         # To generate the reporting periods based on the user input
@@ -44,8 +43,6 @@ class Rules:
 class interimData(Rules):
     def __init__(self, years, incLines, expLines):
         super().__init__(years, incLines, expLines)
-        self.__setNoIncEntries = self.getNumIncEntries()
-        self.__setNoExpEntries = self.getNumExpEntries()
         self.__expenditureType = (
             "Purchase of materials",
             "Rent",
@@ -54,8 +51,13 @@ class interimData(Rules):
         )
         self.__incomeType = ["Sale of products", "Rendering of services"]
 
-    def generateDataSet(self, incLines, expLines):
-        pass
+    def generateIncData(self):
+        print("income lines:", self.getNumYears() * 12 * self.getIncLinesMonth())
+        print("----------------------")
+        for i in self.generateReportingDates():
+            for j in range(12):
+                for inc in range(self.getIncLinesMonth()):
+                    print(i[j], "Actual", "Income", choice(self.__incomeType))
 
 
 def main():
