@@ -2,7 +2,7 @@
 
 from sys import path
 
-path.append("./Project_1/customClasses")
+path.append("./customClasses")
 from dataGenClasses import Rules, interimData
 
 # dataGenClasses import Rules, interimData
@@ -21,6 +21,7 @@ def main():
     )
 
     setOne = interimData(years, incLines, expLines)
+    print(setOne.generateReportingDates())
 
 
 if __name__ == "__main__":
