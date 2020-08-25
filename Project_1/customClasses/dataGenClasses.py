@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-from datetime import date, timedelta, datetime
-from random import choice
+from datetime import date, timedelta
+from random import choice, randint
 
 
 class Rules:
@@ -56,6 +56,7 @@ class interimData(Rules):
         "Production",
         "Administration",
     )
+    intData = []
 
     def __init__(self, years, incLines, expLines):
         super().__init__(years, incLines, expLines)
@@ -63,19 +64,31 @@ class interimData(Rules):
     def generateIncData(self):
         print("income lines:", self.getNumYears() * 12 * self.getIncLinesMonth())
         print("----------------------")
+        rowData = []
         for i in self.generateReportingDates():
             for j in range(12):
                 for inc in range(self.getIncLinesMonth()):
                     period = i[j]
                     incType = choice(self.incomeType)
-                    print(
-                        period,
-                        "Actual",
-                        "Income",
-                        incType,
-                        self.costCentre[0],
-                        incType + "-" + "monthly transactions",
+                    row = (
+                        period
+                        + "-"
+                        + "Actual"
+                        + "-"
+                        + "Income"
+                        + "-"
+                        + incType
+                        + "-"
+                        + self.costCentre[0]
+                        + "-"
+                        + incType
+                        + "-"
+                        + "monthly transactions"
+                        + "-"
+                        + str(randint(1, 10000000) / 100)
                     )
+                    rowData.append(row)
+                    print(rowData)
 
 
 def main():

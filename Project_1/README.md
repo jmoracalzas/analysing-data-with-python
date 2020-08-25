@@ -51,8 +51,8 @@ The system must
 |**Attributes**                         |**Responsibilities**                     |
 | + expenditureType --> tuple(strings)  |                                         |
 | + incomeType --> tuple(strings)       | + generateIncData()                     |
-| + costCentre --> tuple(strings)       | + getInterimData()                      |
-
+| + costCentre --> tuple(strings)       |                                         |
+| + intData --> list()                  |                                         |
 TThe interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br>
 <br>
 
@@ -60,4 +60,4 @@ TThe interimDataset will feed from the following information: 1) cost centre and
 |:---                          |:---                |
 |**Attributes**                |**Responsibilities**|
 |- setColumns                  |- generateReport()  |
-|                              | + exportReport()   |  ((((999999))))
+|                              | + exportReport()   |
