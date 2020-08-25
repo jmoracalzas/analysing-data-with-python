@@ -46,13 +46,14 @@ The system must
 
 <br>
 
-|**InterimData**               |                                         |
-|:---                          |:---                                     |
-|**Attributes**                |**Responsibilities**                     |
-|                              | - generateIncData()|
-|                              | + getInterimData()                      |
+|**InterimData**                        |                                         |
+|:---                                   |:---                                     |
+|**Attributes**                         |**Responsibilities**                     |
+| + expenditureType --> tuple(strings)  |                                         |
+| + incomeType --> tuple(strings)       | + generateIncData()                     |
+| + costCentre --> tuple(strings)       | + getInterimData()                      |
 
-TThe interimDataset will feed from the following information: 1) **divisional structure** (cost centre, branch, department), 2) **transaction type** (category, subcategory) and 3) **business lines** (business line, project)<br>
+TThe interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br>
 <br>
 
 |**Outcome**                   |                    |
