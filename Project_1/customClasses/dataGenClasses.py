@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime
 from random import choice
 
 
@@ -41,15 +41,24 @@ class Rules:
 
 
 class interimData(Rules):
+    expenditureType = (
+        "Purchase of materials",
+        "Rent",
+        "Electricity",
+        "Salaries",
+    )
+
+    incomeType = ("Sale of products", "Rendering of services")
+
+    costCentre = (
+        "Sales",
+        "Distribution",
+        "Production",
+        "Administration",
+    )
+
     def __init__(self, years, incLines, expLines):
         super().__init__(years, incLines, expLines)
-        self.__expenditureType = (
-            "Purchase of materials",
-            "Rent",
-            "Electricity",
-            "Salaries",
-        )
-        self.__incomeType = ["Sale of products", "Rendering of services"]
 
     def generateIncData(self):
         print("income lines:", self.getNumYears() * 12 * self.getIncLinesMonth())
@@ -57,7 +66,16 @@ class interimData(Rules):
         for i in self.generateReportingDates():
             for j in range(12):
                 for inc in range(self.getIncLinesMonth()):
-                    print(i[j], "Actual", "Income", choice(self.__incomeType))
+                    period = i[j]
+                    incType = choice(self.incomeType)
+                    print(
+                        period,
+                        "Actual",
+                        "Income",
+                        incType,
+                        self.costCentre[0],
+                        incType + "-" + "monthly transactions",
+                    )
 
 
 def main():
