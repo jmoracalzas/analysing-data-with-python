@@ -21,7 +21,7 @@ def main():
     )
 
     setOne = interimData(years, incLines, expLines)
-    print(setOne.generateIncData())
+    print(setOne.generateExpData())
 
 
 if __name__ == "__main__":
