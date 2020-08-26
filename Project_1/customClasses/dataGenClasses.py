@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
-from random import choice, randint
+from random import choice, randint, random
 
 
 class Rules:
@@ -88,7 +88,81 @@ class interimData(Rules):
                         + str(randint(1, 10000000) / 100)
                     )
                     rowData.append(row)
-                    print(rowData)
+        return rowData
+
+    def generateExpData(self):
+        print("income exp:", self.getNumYears() * 12 * self.getExpLinesMonth())
+        print("----------------------")
+        rowData = []
+        for i in self.generateReportingDates():
+            for j in range(12):
+                for inc in range(self.getExpLinesMonth()):
+                    period = i[j]
+
+                    # to exclude salaries as they will be added separately
+                    expType = choice(self.expenditureType)
+
+                    while expType == "Salaries":
+                        expType = choice(self.expenditureType)
+
+                    # to generate a cost centre different than "Sales"
+                    costCentre = choice(self.costCentre)
+
+                    while costCentre == "Sales":
+                        costCentre = choice(self.costCentre)
+
+                    # preparing the data
+                    row = (
+                        period
+                        + "-"
+                        + "Actual"
+                        + "-"
+                        + "Expenses"
+                        + "-"
+                        + expType
+                        + "-"
+                        + costCentre
+                        + "-"
+                        + expType
+                        + "-"
+                        + "monthly transactions"
+                        + "-"
+                        + str(randint(1, 5000000) / 100)
+                    )
+                    rowData.append(row)
+
+                    # row = []
+                    # for ic in range(self.getExpLinesMonth()):
+                    #     period = i[j]
+
+                    # # to exclude salaries as they will be added separately
+                    #     expType = "Salaries"
+
+                    # # to generate a cost centre different than "Sales"
+                    #     # costCentre = choice(self.costCentre)
+
+                    #     # while costCentre == "Sales":
+                    #     #     costCentre = choice(self.costCentre)
+
+                    # # preparing the data
+                    #     row = (
+                    #         period
+                    #         + "-"
+                    #         + "Actual"
+                    #         + "-"
+                    #         + "Expenses"
+                    #         + "-"
+                    #         + expType
+                    #         + "-"
+                    #         + costCentre
+                    #         + "-"
+                    #         + expType
+                    #         + "-"
+                    #         + "monthly transactions"
+                    #         + "-"
+                    #         + str(5000)
+
+        return rowData
 
 
 def main():
