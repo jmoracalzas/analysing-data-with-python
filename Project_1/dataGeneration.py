@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import tkinter
 from sys import path
 
 path.append("./customClasses")
