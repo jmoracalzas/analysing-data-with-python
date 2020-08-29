@@ -1,8 +1,7 @@
 #!/usr/bin/env python
-import tkinter
 from sys import path
 
-path.append("./customClasses")
+path.append("./Project_1/Python/customClasses")
 from dataGenClasses import Rules, interimData
 
 # dataGenClasses import Rules, interimData
