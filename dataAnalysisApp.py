@@ -6,7 +6,7 @@ from sys import path
 path.append("./Project_1/python/customClasses")
 from guiClasses import DataAnalysisApp
 
-# Generating the welcome window
+# Generating the GUI
 root = Tk()
 welcomeWin = DataAnalysisApp(root)
 
