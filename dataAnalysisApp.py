@@ -8,6 +8,7 @@ from guiClasses import DataAnalysisApp
 
 # Generating the GUI
 root = Tk()
+root.title("Welcome to my portfolio")
 welcomeWin = DataAnalysisApp(root)
 
 
