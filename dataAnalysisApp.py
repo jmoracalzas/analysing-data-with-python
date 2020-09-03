@@ -6,9 +6,13 @@ from sys import path
 path.append("./Project_1/python/customClasses")
 from guiClasses import DataAnalysisApp
 
-# Generating the GUI
+# Generating the GUI and setting up its properties
 root = Tk()
+
+root.geometry("500x280+25+25")
+root.resizable(False, False)
 root.title("Welcome to my portfolio")
+
 welcomeWin = DataAnalysisApp(root)
 
 
