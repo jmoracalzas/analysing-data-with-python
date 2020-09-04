@@ -11,7 +11,7 @@ root = Tk()
 
 root.geometry("500x280+25+25")
 root.resizable(False, False)
-root.title("Welcome to my portfolio")
+root.title("Project 1: Data Generation and Data Export")
 
 welcomeWin = DataAnalysisApp(root)
 
