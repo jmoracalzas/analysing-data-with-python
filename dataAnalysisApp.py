@@ -6,7 +6,7 @@ from sys import path
 path.append("./Project_1/python/customClasses")
 from guiClasses import DataAnalysisApp
 
-# Generating the GUI and setting up its properties
+# # Generating the GUI and setting up its properties
 root = Tk()
 
 root.geometry("500x280+25+25")
@@ -15,6 +15,4 @@ root.title("Project 1: Data Generation and Data Export")
 
 welcomeWin = DataAnalysisApp(root)
 
-
 root.mainloop()
-
