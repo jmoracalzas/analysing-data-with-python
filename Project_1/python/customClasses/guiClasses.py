@@ -1,8 +1,7 @@
-from textwrap import wrap
 from tkinter import *
 from tkinter import ttk
 
-from PIL.ImageOps import pad
+from click.decorators import command
 
 
 class DataAnalysisApp:
@@ -17,7 +16,7 @@ class DataAnalysisApp:
         )
         self.settingsButton.pack(pady=10, padx=10)
 
-        self.getDataButton = ttk.Button(self.menuFrame, text="Get Data")
+        self.getDataButton = ttk.Button(self.menuFrame, text="Create Data")
         self.getDataButton.pack(padx=10, pady=10)
 
         self.exportButton = ttk.Button(self.menuFrame, text="Export")
@@ -26,7 +25,7 @@ class DataAnalysisApp:
         self.closeButton = ttk.Button(master, text="Exit", command=self.exitApp)
         self.closeButton.place(x=20, y=240)
 
-        # creating the display area text and its content
+        # creating the display area (notebook) text and its content
         self.dispAreaFrame = ttk.Frame(master, width=485)
         self.dispAreaFrame.place(x=115, y=15)
 
@@ -35,55 +34,79 @@ class DataAnalysisApp:
             self.dispAreaFrame,
             text=welcomeMsg,
             justify="left",
-            background="yellow",
             wraplength=375,
+            padding=10,
         )
         self.dispAreaLabel.pack(padx=10)
 
+        # Creating the settings display notebook
+        self.settingsDisplay = ttk.Notebook(self.dispAreaFrame, padding=15)
+        self.settingsDisplay.pack()
+
+        self.basicSettings = ttk.Frame(self.settingsDisplay)
+        self.settingsDisplay.add(
+            self.basicSettings, text="Basic Settings",
+        )
+
+        self.dataTypeSet = ttk.Frame(self.settingsDisplay)
+        self.settingsDisplay.add(self.dataTypeSet, text="Data Type")
+
+        self.incSettings = ttk.Frame(self.settingsDisplay)
+        self.settingsDisplay.add(self.incSettings, text="Income Settings")
+
+        self.expSettings = ttk.Frame(self.settingsDisplay)
+        self.settingsDisplay.add(self.expSettings, text="Expenditure Settings")
+
+        # hidding the sections of the notebook
+        for i in range(self.settingsDisplay.index("end")):
+            self.settingsDisplay.tab(i, state="hidden")
+
     def userInputLayout(self):
-        #     # hides the display label and inserts the widgets
-        #     # to collect the user input
+        #     # hides the display label, unhides the display notebook
+        #     and inserts the widgets to collect the user input
+
         self.dispAreaLabel.forget()
+        self.settingsDisplay.select(0)
+
+        for i in range(self.settingsDisplay.index("end")):
+            self.settingsDisplay.tab(i, state="normal")
+
+        self.settingsButton.config(text="Set", command="")
 
         # Number of years section
         self.yearsLabel = ttk.Label(
-            self.dispAreaFrame,
+            self.basicSettings,
             text="Enter the desired number of years you would like to generate data for:",
             wraplength=255,
             justify="left",
         ).grid(row=0, column=0, pady=10, padx=10)
 
-        self.yearsInput = ttk.Entry(self.dispAreaFrame).grid(
+        self.yearsInput = ttk.Entry(self.basicSettings).grid(
             row=0, column=1, pady=10, padx=10
         )
 
         # Income section
         self.incLinesLabel = ttk.Label(
-            self.dispAreaFrame,
+            self.basicSettings,
             text="How many income transactions would you like to generate every month?",
             wraplength=255,
             justify="left",
         ).grid(row=1, column=0, padx=10, pady=10)
 
-        self.incLinesInput = ttk.Entry(self.dispAreaFrame).grid(
+        self.incLinesInput = ttk.Entry(self.basicSettings).grid(
             row=1, column=1, padx=10, pady=10
         )
 
         # Expenditure sections
         self.expLinesLabel = ttk.Label(
-            self.dispAreaFrame,
+            self.basicSettings,
             text="How many expenditure transactions would you like to generate every month?",
             wraplength=255,
             justify="left",
         ).grid(row=2, column=0, padx=10, pady=10)
 
-        self.expLinesInput = ttk.Entry(self.dispAreaFrame).grid(
+        self.expLinesInput = ttk.Entry(self.basicSettings).grid(
             row=2, column=1, padx=10, pady=10
-        )
-
-        # settings button
-        self.settingsButton = ttk.Button(self.dispAreaFrame, text="Set").grid(
-            row=3, column=1, columnspan=2, sticky="e", padx=10
         )
 
     def exitApp(self):
@@ -91,7 +114,6 @@ class DataAnalysisApp:
 
 
 def main():
-    # Generating the GUI and setting up its properties
     pass
 
 
