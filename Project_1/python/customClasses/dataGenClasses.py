@@ -39,6 +39,9 @@ class Rules:
         )
         return calendar
 
+    # def passSettings(self):
+    #     dataSet = Rules(1, 2, 3)
+
 
 class interimData(Rules):
     expenditureType = (
