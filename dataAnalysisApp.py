@@ -10,7 +10,7 @@ from guiClasses import DataAnalysisApp
 root = Tk()
 
 root.geometry("600x280+25+25")
-root.resizable(False, False)
+# root.resizable(False, False)
 root.title("Project 1: Data Generation and Data Export")
 
 welcomeWin = DataAnalysisApp(root)
