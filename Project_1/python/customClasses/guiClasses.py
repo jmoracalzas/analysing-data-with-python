@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk
+from sys import path
 
-from more_itertools.more import padded
+path.append("./Project_1/python/customClasses")
+from dataGenClasses import Rules, interimData
 
 
 class DataAnalysisApp:
@@ -45,7 +47,7 @@ class DataAnalysisApp:
         self.settingsDisplay = ttk.Notebook(self.dispAreaFrame)
         self.settingsDisplay.pack(pady=10)
 
-        self.basicSettings = ttk.Frame(self.settingsDisplay,)
+        self.basicSettings = ttk.Frame(self.settingsDisplay)
         self.settingsDisplay.add(
             self.basicSettings, text="Basic Settings",
         )
@@ -73,7 +75,7 @@ class DataAnalysisApp:
         for i in range(self.settingsDisplay.index("end")):
             self.settingsDisplay.tab(i, state="normal")
 
-        self.settingsButton.config(text="Set", command="")
+        # self.settingsButton.config(text="Set")
 
         #     # Number of years section
         self.yearsLabel = ttk.Label(
@@ -104,8 +106,11 @@ class DataAnalysisApp:
 
         self.expLinesInput = ttk.Entry(self.basicSettings).grid(row=2, column=1)
 
-    def buildData(self):
-        pass
+        self.settingsButton.config(text="Set", command=self.setDataCallBack)
+
+    def setDataCallBack(self):
+        x = interimData(1, 1, 1)
+        print(x.generateExpData())
 
     def exitApp(self):
         exit()
