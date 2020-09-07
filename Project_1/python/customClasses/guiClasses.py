@@ -75,9 +75,8 @@ class DataAnalysisApp:
         for i in range(self.settingsDisplay.index("end")):
             self.settingsDisplay.tab(i, state="normal")
 
-        # self.settingsButton.config(text="Set")
+        # Number of years section
 
-        #     # Number of years section
         self.yearsLabel = ttk.Label(
             self.basicSettings,
             text="Enter the desired number of years you would like to generate data for:",
@@ -85,7 +84,11 @@ class DataAnalysisApp:
             justify="left",
         ).grid(row=0, column=0, sticky="w", pady=10, padx=5)
 
-        self.yearsInput = ttk.Entry(self.basicSettings).grid(row=0, column=1)
+        self.yearsEntered = StringVar()
+
+        self.yearsInput = ttk.Entry(
+            self.basicSettings, textvariable=self.yearsEntered,
+        ).grid(row=0, column=1)
 
         # Income section
         self.incLinesLabel = ttk.Label(
@@ -94,7 +97,11 @@ class DataAnalysisApp:
             wraplength=250,
         ).grid(row=1, column=0, sticky="w", pady=10, padx=5)
 
-        self.incLinesInput = ttk.Entry(self.basicSettings).grid(row=1, column=1)
+        self.incLinesEntered = StringVar()
+
+        self.incLinesInput = ttk.Entry(
+            self.basicSettings, textvariable=self.incLinesEntered
+        ).grid(row=1, column=1)
 
         # Expenditure sections
         self.expLinesLabel = ttk.Label(
@@ -104,12 +111,19 @@ class DataAnalysisApp:
             justify="left",
         ).grid(row=2, column=0, sticky="w", pady=10, padx=5)
 
-        self.expLinesInput = ttk.Entry(self.basicSettings).grid(row=2, column=1)
+        self.expLinesEntered = StringVar()
+        self.expLinesInput = ttk.Entry(
+            self.basicSettings, textvariable=self.expLinesEntered
+        ).grid(row=2, column=1)
 
         self.settingsButton.config(text="Set", command=self.setDataCallBack)
 
     def setDataCallBack(self):
-        x = interimData(1, 1, 1)
+        self.yearsPassed = int(self.yearsEntered.get())
+        self.incLinesPassed = int(self.incLinesEntered.get())
+        self.expLinesPassed = int(self.expLinesEntered.get())
+
+        x = interimData(self.yearsPassed, self.incLinesPassed, self.expLinesPassed)
         print(x.generateExpData())
 
     def exitApp(self):

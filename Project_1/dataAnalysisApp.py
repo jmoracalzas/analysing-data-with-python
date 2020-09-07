@@ -17,17 +17,6 @@ def main():
     welcomeWin = DataAnalysisApp(root)
     root.mainloop()
 
-    dataSet = ""
-
 
 if __name__ == "__main__":
     main()
-
-    # years = input("How many years does the data need to reflect? ")
-    # incLines = input("How many lines of income would you like to generate each month? ")
-    # expLines = input(
-    #     "How many lines of expenditure would you like to generate every month? "
-    # )
-
-    # setOne = interimData(years, incLines, expLines)
-    # print(setOne.generateExpData())
