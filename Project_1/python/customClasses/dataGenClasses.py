@@ -8,8 +8,8 @@ class Rules:
     # To store the initial parameters set by the user
     # used to determine the total number of lines to generate
     def __init__(self, years, incLines, expLines):
-        self.__setNoYears = int(years)
-        self.__setIncLines = int(incLines)
+        self.__setNoYears = years
+        self.__setIncLines = incLines
         self.__setExpLines = int(expLines)
         self.startDate = date.today()
 
@@ -38,9 +38,6 @@ class Rules:
             ]
         )
         return calendar
-
-    # def passSettings(self):
-    #     dataSet = Rules(1, 2, 3)
 
 
 class interimData(Rules):
@@ -94,7 +91,7 @@ class interimData(Rules):
         return rowData
 
     def generateExpData(self):
-        print("income exp:", self.getNumYears() * 12 * self.getExpLinesMonth())
+        print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
         print("----------------------")
         rowData = []
         for i in self.generateReportingDates():
@@ -130,7 +127,7 @@ class interimData(Rules):
                         + "-"
                         + "monthly transactions"
                         + "-"
-                        + str(randint(1, 5000000) / 100)
+                        + str(randint(1, 3000000) / 100)
                     )
                     rowData.append(row)
 
