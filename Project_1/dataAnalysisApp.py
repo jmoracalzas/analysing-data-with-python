@@ -4,6 +4,7 @@ from sys import path
 
 path.append("./Project_1/python/customClasses")
 from guiClasses import DataAnalysisApp
+from dataGenClasses import Rules, interimData
 
 
 def main():
@@ -15,6 +16,8 @@ def main():
     root.title("Project 1: Data Generation and Data Export")
     welcomeWin = DataAnalysisApp(root)
     root.mainloop()
+
+    dataSet = ""
 
 
 if __name__ == "__main__":
