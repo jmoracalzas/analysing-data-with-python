@@ -1,12 +1,10 @@
 from tkinter import *
 from tkinter import ttk
-from sys import path
-
-path.append("./Project_1/python/customClasses")
+from tkinter import messagebox
 from dataGenClasses import Rules, interimData
 
 
-class DataAnalysisApp:
+class GuiWindow:
     def __init__(self, master):
         # creating the pain window
         self.painWindow = ttk.PanedWindow(master, orient=HORIZONTAL)
@@ -65,9 +63,9 @@ class DataAnalysisApp:
         for i in range(self.settingsDisplay.index("end")):
             self.settingsDisplay.tab(i, state="hidden")
 
+    # The method shown below hides the display label, unhides the display notebook
+    # and inserts the widgets to collect the user input
     def userInputCallBack(self):
-        #     #     # hides the display label, unhides the display notebook
-        #     #     and inserts the widgets to collect the user input
 
         self.dispAreaLabel.forget()
         self.settingsDisplay.select(0)
@@ -118,13 +116,24 @@ class DataAnalysisApp:
 
         self.settingsButton.config(text="Set", command=self.setDataCallBack)
 
+    # This method passes the user input to start generating the data
     def setDataCallBack(self):
-        self.yearsPassed = int(self.yearsEntered.get())
-        self.incLinesPassed = int(self.incLinesEntered.get())
-        self.expLinesPassed = int(self.expLinesEntered.get())
+        try:
+            self.yearsPassed = int(self.yearsEntered.get())
+            self.incLinesPassed = int(self.incLinesEntered.get())
+            self.expLinesPassed = int(self.expLinesEntered.get())
 
-        x = interimData(self.yearsPassed, self.incLinesPassed, self.expLinesPassed)
-        print(x.generateExpData())
+            userData = interimData(
+                self.yearsPassed, self.incLinesPassed, self.expLinesPassed
+            )
+            # These two lines have been added for testing purposes
+            print(userData.generateExpData())
+            print(userData.generateIncData())
+
+        except ValueError:
+            messagebox.showinfo(
+                title="Error", message="Incorrect input. Please try again."
+            )
 
     def exitApp(self):
         exit()
@@ -136,4 +145,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

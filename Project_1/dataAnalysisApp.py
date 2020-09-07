@@ -3,8 +3,7 @@ from tkinter import *
 from sys import path
 
 path.append("./Project_1/python/customClasses")
-from guiClasses import DataAnalysisApp
-from dataGenClasses import Rules, interimData
+from guiLayout import GuiWindow
 
 
 def main():
@@ -14,7 +13,7 @@ def main():
     root.geometry("600x280+25+25")
     # root.resizable(False, False)
     root.title("Project 1: Data Generation and Data Export")
-    welcomeWin = DataAnalysisApp(root)
+    welcomeWin = GuiWindow(root)
     root.mainloop()
 
 
