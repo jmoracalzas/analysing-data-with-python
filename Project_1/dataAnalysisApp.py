@@ -3,7 +3,7 @@ from tkinter import *
 from sys import path
 
 path.append("./Project_1/python/customClasses")
-from guiClasses import DataAnalysisApp
+from guiLayout import DataAnalysisApp
 from dataGenClasses import Rules, interimData
 
 
