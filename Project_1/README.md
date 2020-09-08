@@ -15,7 +15,15 @@ This final block of the project will be an introduction to manipulating data in 
 
 ## Tools and programming languages <br>
 1. Python 3
-2. Microsoft Excel
+2. Microsoft Excel and text files
+
+## Status
+|**Element**                    |**Algorithm**         |**User Interface**|
+|:---                           |:---                  |:---              |
+|Basic input of parameters      |Complete              |Complete          |
+|Generation of interim data     |In progress           |Not applicable    |
+|Selection of output type       |Pending               |Pending           |
+|Customisation of user settings |Pending               |Pending           |
 
 ## Documentation <br>
 ### Requirements

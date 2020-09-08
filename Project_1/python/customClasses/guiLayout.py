@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-
-from click.decorators import command
 from dataGenClasses import Rules, interimData
 
 
@@ -57,7 +55,7 @@ class GuiWindow:
         )
 
         self.dataTypeSet = ttk.Frame(self.settingsDisplay)
-        self.settingsDisplay.add(self.dataTypeSet, text="Data Type")
+        self.settingsDisplay.add(self.dataTypeSet, text="Output Settings")
 
         self.incSettings = ttk.Frame(self.settingsDisplay)
         self.settingsDisplay.add(self.incSettings, text="Income Settings")
@@ -79,6 +77,16 @@ class GuiWindow:
         for i in range(self.settingsDisplay.index("end")):
             self.settingsDisplay.tab(i, state="normal")
 
+        # executes the functions to created the notebook widgets
+        self.basicSettingsLayout()
+        self.typeExportSettings()
+
+        # converts the 'settings' button into the 'set' button
+        self.settingsButton.config(text="Set", command=self.setDataCallBack)
+
+    # the following functions creates the 'basic settings' widgets
+
+    def basicSettingsLayout(self):
         # Number of years section
 
         self.yearsLabel = ttk.Label(
@@ -120,7 +128,38 @@ class GuiWindow:
             self.basicSettings, textvariable=self.expLinesEntered
         ).grid(row=2, column=1)
 
-        self.settingsButton.config(text="Set", command=self.setDataCallBack)
+        messagebox.showinfo(title="Work in progress", message="In progress")
+
+    # the following functions creates the 'output settings' widgets
+    # data type section
+    def typeExportSettings(self):
+        self.dataTypeGroup = ttk.LabelFrame(
+            self.dataTypeSet, text="Type of data to generate"
+        )
+        self.dataTypeGroup.pack(anchor="w", padx=15, pady=10)
+
+        self.infoType = StringVar()
+
+        checkActual = ttk.Radiobutton(
+            self.dataTypeGroup,
+            variable=self.infoType,
+            text="Actual amounts",
+            value="Actuals",
+        ).pack(anchor="w", padx=10, pady=3)
+
+        checkBudget = ttk.Radiobutton(
+            self.dataTypeGroup,
+            variable=self.infoType,
+            text="Budget amounts",
+            value="Budget",
+        ).pack(anchor="w", padx=10, pady=3)
+
+        checkBoth = ttk.Radiobutton(
+            self.dataTypeGroup,
+            variable=self.infoType,
+            text="Actual and budget amounts",
+            value="Both",
+        ).pack(anchor="w", padx=10, pady=3)
 
     # This method passes the user input to start generating the data
     def setDataCallBack(self):
@@ -141,6 +180,7 @@ class GuiWindow:
                 title="Error", message="Incorrect input. Please try again."
             )
 
+    # This function generates the dataset
     def buildDataCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
 
