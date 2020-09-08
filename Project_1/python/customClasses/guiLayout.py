@@ -1,6 +1,8 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+
+from click.decorators import command
 from dataGenClasses import Rules, interimData
 
 
@@ -25,10 +27,14 @@ class GuiWindow:
         )
         self.settingsButton.pack(pady=10)
 
-        self.getDataButton = ttk.Button(self.menuFrame, text="Build Data")
+        self.getDataButton = ttk.Button(
+            self.menuFrame, text="Build Data", command=self.buildDataCallBack
+        )
         self.getDataButton.pack(pady=10)
 
-        self.exportButton = ttk.Button(self.menuFrame, text="Export")
+        self.exportButton = ttk.Button(
+            self.menuFrame, text="Export", command=self.exportCallBack
+        )
         self.exportButton.pack(pady=10)
 
         self.closeButton = ttk.Button(self.menuFrame, text="Exit", command=self.exitApp)
@@ -134,6 +140,12 @@ class GuiWindow:
             messagebox.showinfo(
                 title="Error", message="Incorrect input. Please try again."
             )
+
+    def buildDataCallBack(self):
+        messagebox.showinfo(title="Build Data", message="Work in progress")
+
+    def exportCallBack(self):
+        messagebox.showinfo(title="Build Data", message="Work in progress")
 
     def exitApp(self):
         exit()
