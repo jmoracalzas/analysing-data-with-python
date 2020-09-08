@@ -1,15 +1,6 @@
-from cgitb import text
-from cmath import exp
-from logging import setLogRecordFactory
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
-from turtle import bgcolor
-from PIL.ImageOps import pad
-
-from click.decorators import command
-from cryptography.hazmat.primitives.asymmetric import padding
-from google.protobuf.struct_pb2 import Value
 from dataGenClasses import Rules, interimData
 
 
@@ -137,7 +128,10 @@ class GuiWindow:
             self.basicSettings, textvariable=self.expLinesEntered
         ).grid(row=2, column=1)
 
+        messagebox.showinfo(title="Work in progress", message="In progress")
+
     # the following functions creates the 'output settings' widgets
+    # data type section
     def typeExportSettings(self):
         self.dataTypeGroup = ttk.LabelFrame(
             self.dataTypeSet, text="Type of data to generate"
