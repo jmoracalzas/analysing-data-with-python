@@ -6,6 +6,9 @@ from dataGenClasses import Rules, interimData
 
 class GuiWindow:
     def __init__(self, master):
+        # creating a tuple to store the user input
+        self.userSettings = []
+
         # creating the pain window
         self.painWindow = ttk.PanedWindow(master, orient=HORIZONTAL)
         self.painWindow.pack(fill=BOTH, expand=True)
@@ -88,7 +91,6 @@ class GuiWindow:
 
     def basicSettingsLayout(self):
         # Number of years section
-
         self.yearsLabel = ttk.Label(
             self.basicSettings,
             text="Enter the desired number of years you would like to generate data for:",
@@ -128,8 +130,6 @@ class GuiWindow:
             self.basicSettings, textvariable=self.expLinesEntered
         ).grid(row=2, column=1)
 
-        messagebox.showinfo(title="Work in progress", message="In progress")
-
     # the following functions creates the 'output settings' widgets
     # data type section
     def typeExportSettings(self):
@@ -139,12 +139,13 @@ class GuiWindow:
         self.dataTypeGroup.pack(anchor="w", padx=15, pady=10)
 
         self.infoType = StringVar()
+        self.infoType.set("Actual")
 
         checkActual = ttk.Radiobutton(
             self.dataTypeGroup,
             variable=self.infoType,
             text="Actual amounts",
-            value="Actuals",
+            value="Actual",
         ).pack(anchor="w", padx=10, pady=3)
 
         checkBudget = ttk.Radiobutton(
@@ -163,17 +164,20 @@ class GuiWindow:
 
     # This method passes the user input to start generating the data
     def setDataCallBack(self):
+        # This method stores the user settings into a list
         try:
             self.yearsPassed = int(self.yearsEntered.get())
             self.incLinesPassed = int(self.incLinesEntered.get())
             self.expLinesPassed = int(self.expLinesEntered.get())
+            self.dataTypePassed = self.infoType.get()
 
-            userData = interimData(
-                self.yearsPassed, self.incLinesPassed, self.expLinesPassed
-            )
-            # These two lines have been added for testing purposes
-            print(userData.generateExpData())
-            print(userData.generateIncData())
+            # emptying previous settings
+            del self.userSettings[::]
+
+            self.userSettings.append(self.yearsPassed)
+            self.userSettings.append(self.incLinesPassed)
+            self.userSettings.append(self.expLinesPassed)
+            self.userSettings.append(self.dataTypePassed)
 
         except ValueError:
             messagebox.showinfo(
@@ -182,7 +186,8 @@ class GuiWindow:
 
     # This function generates the dataset
     def buildDataCallBack(self):
-        messagebox.showinfo(title="Build Data", message="Work in progress")
+        # messagebox.showinfo(title="Build Data", message="Work in progress")
+        print(self.userSettings)
 
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
