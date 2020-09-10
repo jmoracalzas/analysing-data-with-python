@@ -7,10 +7,11 @@ class Rules:
 
     # To store the initial parameters set by the user
     # used to determine the total number of lines to generate
-    def __init__(self, years, incLines, expLines):
+    def __init__(self, years, incLines, expLines, infoType):
         self.__setNoYears = years
         self.__setIncLines = incLines
         self.__setExpLines = int(expLines)
+        self.infoType = infoType
         self.startDate = date.today()
 
     def getNumYears(self):
@@ -58,8 +59,13 @@ class interimData(Rules):
     )
     intData = []
 
-    def __init__(self, years, incLines, expLines):
-        super().__init__(years, incLines, expLines)
+    def __init__(self, years, incLines, expLines, infoType):
+        super().__init__(years, incLines, expLines, infoType)
+
+    def buildDataSet(self):
+        # pass
+        if self.infoType != "Both":
+            self.generateIncData()
 
     def generateIncData(self):
         print("income lines:", self.getNumYears() * 12 * self.getIncLinesMonth())
@@ -73,7 +79,7 @@ class interimData(Rules):
                     row = (
                         period
                         + "-"
-                        + "Actual"
+                        + self.infoType
                         + "-"
                         + "Income"
                         + "-"

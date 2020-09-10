@@ -4,6 +4,7 @@ from sys import path
 
 path.append("./Project_1/python/customClasses")
 from guiLayout import GuiWindow
+from dataGenClasses import Rules, interimData
 
 
 def main():
@@ -13,6 +14,7 @@ def main():
     root.geometry("600x280+25+25")
     # root.resizable(False, False)
     root.title("Project 1: Data Generation and Data Export")
+
     welcomeWin = GuiWindow(root)
     root.mainloop()
 
