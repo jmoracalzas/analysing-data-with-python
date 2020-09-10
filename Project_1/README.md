@@ -23,6 +23,7 @@ This final block of the project will be an introduction to manipulating data in 
 |Basic input of parameters      |Complete              |Complete          |
 |Generation of interim data     |In progress           |Not applicable    |
 |Selection of output type       |Pending               |Pending           |
+|GUI styling                    |Not applicable        |Pending           |
 |Customisation of user settings |Pending               |Pending           |
 
 ## Documentation <br>
