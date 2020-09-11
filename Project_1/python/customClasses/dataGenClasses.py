@@ -62,17 +62,16 @@ class interimData(Rules):
     def __init__(self, years, incLines, expLines, infoType):
         super().__init__(years, incLines, expLines, infoType)
 
-    def buildDataSet(self):
-        # pass
-        if self.infoType != "Both":
-            self.generateIncData()
+    def dataSet(self):
+        self.generateIncData()
 
+    # calculates the no of income lines to generate and creates the income dataset
     def generateIncData(self):
         print("income lines:", self.getNumYears() * 12 * self.getIncLinesMonth())
         print("----------------------")
         rowData = []
         for i in self.generateReportingDates():
-            for j in range(12):
+            for j in range(12):  # inserting income lines every month
                 for inc in range(self.getIncLinesMonth()):
                     period = i[j]
                     incType = choice(self.incomeType)

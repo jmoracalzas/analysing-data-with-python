@@ -1,3 +1,4 @@
+from plistlib import Data
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -29,7 +30,13 @@ class GuiWindow:
         self.settingsButton.pack(pady=10)
 
         self.getDataButton = ttk.Button(
-            self.menuFrame, text="Build Data", command=self.buildDataCallBack
+            self.menuFrame,
+            text="Build Data",
+            command=self.buildDataCallBack
+            # self.userSettings[0],
+            # self.userSettings[1],
+            # self.userSettings[2],
+            # self.userSettings[3],
         )
         self.getDataButton.pack(pady=10)
 
@@ -171,7 +178,7 @@ class GuiWindow:
             self.expLinesPassed = int(self.expLinesEntered.get())
             self.dataTypePassed = self.infoType.get()
 
-            # emptying previous settings
+            # emptying previous settings and passing the new parameters
             del self.userSettings[::]
 
             self.userSettings.append(self.yearsPassed)
@@ -184,10 +191,15 @@ class GuiWindow:
                 title="Error", message="Incorrect input. Please try again."
             )
 
-    # This function generates the dataset
+    # This function created the interimData object and generates the dataset
     def buildDataCallBack(self):
-        # messagebox.showinfo(title="Build Data", message="Work in progress")
-        print(self.userSettings)
+        dataSet = interimData(
+            self.userSettings[0],  # years
+            self.userSettings[1],  # noIncLines
+            self.userSettings[2],  # no ExpLines
+            self.userSettings[3],  # dataType
+        )
+        print(dataSet.generateIncData())
 
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
