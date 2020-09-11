@@ -1,4 +1,3 @@
-from plistlib import Data
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
@@ -30,13 +29,7 @@ class GuiWindow:
         self.settingsButton.pack(pady=10)
 
         self.getDataButton = ttk.Button(
-            self.menuFrame,
-            text="Build Data",
-            command=self.buildDataCallBack
-            # self.userSettings[0],
-            # self.userSettings[1],
-            # self.userSettings[2],
-            # self.userSettings[3],
+            self.menuFrame, text="Build Data", command=self.buildDataCallBack
         )
         self.getDataButton.pack(pady=10)
 
@@ -199,7 +192,9 @@ class GuiWindow:
             self.userSettings[2],  # no ExpLines
             self.userSettings[3],  # dataType
         )
-        print(dataSet.generateIncData())
+        # testing lines
+        # testing lines
+        print(dataSet.createDataSet())
 
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
