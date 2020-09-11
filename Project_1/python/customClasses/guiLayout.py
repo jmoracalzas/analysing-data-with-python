@@ -171,7 +171,7 @@ class GuiWindow:
             self.expLinesPassed = int(self.expLinesEntered.get())
             self.dataTypePassed = self.infoType.get()
 
-            # emptying previous settings
+            # emptying previous settings and passing the new parameters
             del self.userSettings[::]
 
             self.userSettings.append(self.yearsPassed)
@@ -184,10 +184,19 @@ class GuiWindow:
                 title="Error", message="Incorrect input. Please try again."
             )
 
-    # This function generates the dataset
+    # This function created the interimData object and generates the dataset
     def buildDataCallBack(self):
-        # messagebox.showinfo(title="Build Data", message="Work in progress")
-        print(self.userSettings)
+        dataSet = interimData(
+            self.userSettings[0],  # years
+            self.userSettings[1],  # noIncLines
+            self.userSettings[2],  # no ExpLines
+            self.userSettings[3],  # dataType
+        )
+        # testing lines
+        print(dataSet.createDataSet())
+
+        for line in dataSet.intData():
+            print(line)
 
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
