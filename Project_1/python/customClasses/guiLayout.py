@@ -193,8 +193,10 @@ class GuiWindow:
             self.userSettings[3],  # dataType
         )
         # testing lines
-        # testing lines
         print(dataSet.createDataSet())
+
+        for line in dataSet.intData():
+            print(line)
 
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")

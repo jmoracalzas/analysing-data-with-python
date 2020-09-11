@@ -79,20 +79,20 @@ class interimData(Rules):
                     incType = choice(self.incomeType)
                     row = (
                         period
-                        + "-"
+                        + "\t"
                         + self.infoType
-                        + "-"
+                        + "\t"
                         + "Income"
-                        + "-"
+                        + "\t"
                         + incType
-                        + "-"
+                        + "\t"
                         + self.costCentre[0]
-                        + "-"
+                        + "\t"
                         + incType
-                        + "-"
+                        + " "
                         + "monthly transactions"
-                        + "-"
-                        + str(randint(1, 10000000) / 100)
+                        + "\t"
+                        + str(-1 * (randint(1, 10000000) / 100))
                     )
                     rowData.append(row)
 
@@ -128,19 +128,19 @@ class interimData(Rules):
                     # preparing the data
                     row = (
                         period
-                        + "-"
+                        + ","
                         + "Actual"
-                        + "-"
+                        + ","
                         + "Expenses"
-                        + "-"
+                        + ","
                         + expType
-                        + "-"
+                        + ","
                         + costCentre
-                        + "-"
+                        + ","
                         + expType
                         + "-"
                         + "monthly transactions"
-                        + "-"
+                        + ","
                         + str(randint(1, 3000000) / 100)
                     )
                     rowData.append(row)
@@ -183,15 +183,15 @@ class interimData(Rules):
         del self.intData[::]
 
         if self.infoType == "Both":
-            # generating actual amounts
-            self.infoType = "Actual"
-            self.generateIncData()
+            # # generating actual amounts
+            # self.infoType = "Actual"
+            # self.generateIncData()
 
-            # generating budget amounts
-            self.infoType = "Budget"
-            self.generateIncData()
+            # # generating budget amounts
+            # self.infoType = "Budget"
+            # self.generateIncData()
 
-        else:
+            # else:
             self.generateIncData()
 
         return self.intData
