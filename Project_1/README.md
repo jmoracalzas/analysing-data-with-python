@@ -1,19 +1,19 @@
 # Project 1: Analysing data with Python 3 and Microsoft Excel  
 
-## Introduction <br>
+## Introduction <br />
 This projects was designed to facilitate learning activities. It focuses on utilising basic programming techniques to implement input, output, control flow, GUI development and finally integrating Python 3 and Microsoft Excel.
 
-## Stages <br>
-1. *Generation of data*<br>
+## Stages <br />
+1. *Generation of data*<br />
 This part of the project focuses on generating some sample data that will be manipulated at a later stage. This data will be stored in CSV files.
 
-2. *Creation of a basic GUI* <br>
+2. *Creation of a basic GUI* <br />
 This section of the project will be used to explore the Tkinter module to create a basic GUI.
 
-3. *An introduction to Python 3 and Microsoft Excel* <br>
+3. *An introduction to Python 3 and Microsoft Excel* <br />
 This final block of the project will be an introduction to manipulating data in Python 3 and exporting the output on to Microsoft Excel.
 
-## Tools and programming languages <br>
+## Tools and programming languages <br />
 1. Python 3
 2. Microsoft Excel and text files
 
@@ -22,11 +22,11 @@ This final block of the project will be an introduction to manipulating data in 
 |:---                           |:---                  |:---              |
 |Basic input of parameters      |Complete              |Complete          |
 |Generation of interim data     |In progress           |Not applicable    |
-|Selection of output type       |Pending               |Pending           |
+|Output creation                |Pending               |Pending           |
 |GUI styling                    |Not applicable        |Pending           |
 |Customisation of user settings |Pending               |Pending           |
 
-## Documentation <br>
+## Documentation <br />
 ### Requirements
 The system must
 - allow the user to input some parameters
@@ -53,7 +53,7 @@ The system must
 |- setIncLines --> integer     | + getExpLinesMonth()              |
 |+ startDate --> date          | + generateReportingDates()        |
 
-<br>
+<br />
 
 |**InterimData**                        |                                         |
 |:---                                   |:---                                     |
@@ -63,8 +63,8 @@ The system must
 | + costCentre --> tuple(strings)       | + generateExpData()                     |
 | + intData --> list()                  |                                         |
 
-TThe interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br>
-<br>
+TThe interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br />
+<br />
 
 |**Outcome**                   |                    |
 |:---                          |:---                |
