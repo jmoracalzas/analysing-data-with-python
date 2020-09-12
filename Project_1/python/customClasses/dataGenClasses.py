@@ -100,8 +100,9 @@ class interimData(Rules):
         incData += rowData
 
         # transferring data to the class storage
-        self.intData += incData
 
+        self.intData += incData
+        print(self.generateIncData)
         return None
 
     def generateExpData(self):
@@ -194,6 +195,7 @@ class interimData(Rules):
             # else:
             self.generateIncData()
 
+        print(self.intData)
         return self.intData
 
 
