@@ -192,9 +192,9 @@ class GuiWindow:
             self.userSettings[2],  # no ExpLines
             self.userSettings[3],  # dataType
         )
-        # testing lines
         dataSet.createDataSet()
 
+        # testing
         for line in dataSet.intData:
             print(line)
 
