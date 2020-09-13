@@ -100,9 +100,7 @@ class interimData(Rules):
         incData += rowData
 
         # transferring data to the class storage
-
         self.intData += incData
-        print(self.generateIncData)
         return None
 
     def generateExpData(self):
@@ -184,6 +182,7 @@ class interimData(Rules):
         del self.intData[::]
 
         if self.infoType == "Both":
+            pass
             # # generating actual amounts
             # self.infoType = "Actual"
             # self.generateIncData()
@@ -191,12 +190,12 @@ class interimData(Rules):
             # # generating budget amounts
             # self.infoType = "Budget"
             # self.generateIncData()
-
-            # else:
+            #
+        else:
             self.generateIncData()
 
-        print(self.intData)
         return self.intData
+        # return None
 
 
 def main():
