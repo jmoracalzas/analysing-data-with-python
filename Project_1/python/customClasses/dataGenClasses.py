@@ -1,6 +1,9 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
 from random import choice, randint  # random
+#from sys import path
+
+#path.append("/Project_1/python/customClasses")
 
 
 class Rules:

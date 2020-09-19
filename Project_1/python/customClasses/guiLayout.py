@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+
 from dataGenClasses import Rules, interimData
 
 
