@@ -2,7 +2,7 @@
 from tkinter import *
 from sys import path
 
-path.append("MY-PORTFOLIO/Project_1/python/customClasses")
+path.append("./Project_1/python/customClasses")
 from guiLayout import GuiWindow
 from dataGenClasses import Rules, interimData
 
