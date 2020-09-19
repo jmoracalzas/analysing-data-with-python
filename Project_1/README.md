@@ -18,13 +18,14 @@ This final block of the project will be an introduction to manipulating data in 
 2. Microsoft Excel and text files
 
 ## Status
-|**Element**                    |**Algorithm**         |**User Interface**|
+|**Element**                    |**Main Script**       |**User Interface**|
 |:---                           |:---                  |:---              |
 |Basic input of parameters      |Complete              |Complete          |
 |Generation of interim data     |In progress           |Not applicable    |
 |Output creation                |Pending               |Pending           |
 |GUI styling                    |Not applicable        |Pending           |
 |Customisation of user settings |Pending               |Pending           |
+|Code optimisation              |Pending               |Not applicable    |
 
 ## Documentation <br />
 ### Requirements
