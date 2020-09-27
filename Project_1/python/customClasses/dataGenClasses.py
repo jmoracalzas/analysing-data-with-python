@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
 from random import choice, randint  # random
-#from sys import path
 
-#path.append("/Project_1/python/customClasses")
+# from sys import path
+
+# path.append("/Project_1/python/customClasses")
 
 
 class Rules:
@@ -61,7 +62,7 @@ class interimData(Rules):
         "Production",
         "Administration",
     )
-    intData = []
+    intData = []  # yo hold the user's dataset
 
     def __init__(self, years, incLines, expLines, infoType):
         super().__init__(years, incLines, expLines, infoType)
@@ -106,9 +107,11 @@ class interimData(Rules):
         self.intData += incData
         return None
 
-    def generateExpData(self):
+    def generateVarExp(self):
         print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
         print("----------------------")
+
+        varExpData = []
         rowData = []
         expenditureTuple = tuple(self.expenditureType.items())
 
@@ -153,12 +156,42 @@ class interimData(Rules):
                         + "monthly transactions"
                         + "\t"
                         + str(randint(1, 3000000) / 100)
-                        #             + "\t"
-                        #             + expenditureClassification
                     )
                     rowData.append(row)
 
-        return rowData
+        del varExpData[::]
+        varExpData += rowData
+
+        # transferring data to the class storage
+        self.intData += varExpData
+        return None
+
+    def generateFixExp(self):
+
+        fixedExpData = []
+        rowData = []
+        expenditureTuple = tuple(self.expenditureType.items())
+
+        for i in self.generateReportingDates():
+            for j in range(12):
+
+                # to exclude variable costs as they will be added separately
+                # to select a random expenditure
+                randomExpenditure = choice(expenditureTuple)
+                expType = randomExpenditure[0]
+
+                # to determine if it is fixed or variable
+                expenditureClassification = randomExpenditure[1][0]
+
+                while expenditureClassification == "variable":
+                    randomExpenditure = choice(expenditureTuple)
+                    expType = randomExpenditure[0]
+                    expenditureClassification = randomExpenditure[1][0]
+
+                # to generate a cost centre different than "Sales"
+                costCentre = "Administration"
+
+                print(j, costCentre)
 
     def createDataSet(self):
         # deleting any previous stored data
@@ -169,13 +202,17 @@ class interimData(Rules):
             # generating the actual amounts
             self.infoType = "Actual"
             self.generateIncData()
+            self.generateVarExp()
 
             # generating budget amounts
             self.infoType = "Budget"
             self.generateIncData()
+            self.generateVarExp()
 
         else:
-            self.generateIncData()
+            # self.generateIncData()
+            # self.generateVarExp()
+            self.generateFixExp()
 
         return self.intData
 
