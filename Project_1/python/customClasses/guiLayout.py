@@ -199,7 +199,7 @@ class GuiWindow:
         # for line in dataSet.intData:
         #    print(line)
         # print(dataSet.generateExpData())
-        print(dataSet.generateExpData())
+        print(dataSet.generateVarExp())
         # print(dataSet.generateReportingDates())
 
     def exportCallBack(self):

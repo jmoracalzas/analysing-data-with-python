@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
 from random import choice, randint  # random
-#from sys import path
 
-#path.append("/Project_1/python/customClasses")
+# from sys import path
+
+# path.append("/Project_1/python/customClasses")
 
 
 class Rules:
@@ -106,7 +107,7 @@ class interimData(Rules):
         self.intData += incData
         return None
 
-    def generateExpData(self):
+    def generateVarExp(self):
         print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
         print("----------------------")
         rowData = []
