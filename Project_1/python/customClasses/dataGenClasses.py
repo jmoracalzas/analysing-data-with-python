@@ -168,10 +168,30 @@ class interimData(Rules):
 
     def generateFixExp(self):
 
-        print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
-        print("----------------------")
+        fixedExpData = []
         rowData = []
         expenditureTuple = tuple(self.expenditureType.items())
+
+        for i in self.generateReportingDates():
+            for j in range(12):
+
+                # to exclude variable costs as they will be added separately
+                # to select a random expenditure
+                randomExpenditure = choice(expenditureTuple)
+                expType = randomExpenditure[0]
+
+                # to determine if it is fixed or variable
+                expenditureClassification = randomExpenditure[1][0]
+
+                while expenditureClassification == "variable":
+                    randomExpenditure = choice(expenditureTuple)
+                    expType = randomExpenditure[0]
+                    expenditureClassification = randomExpenditure[1][0]
+
+                # to generate a cost centre different than "Sales"
+                costCentre = "Administration"
+
+                print(j, costCentre)
 
     def createDataSet(self):
         # deleting any previous stored data
@@ -190,8 +210,9 @@ class interimData(Rules):
             self.generateVarExp()
 
         else:
-            self.generateIncData()
-            self.generateVarExp()
+            # self.generateIncData()
+            # self.generateVarExp()
+            self.generateFixExp()
 
         return self.intData
 
