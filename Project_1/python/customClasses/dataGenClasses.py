@@ -62,7 +62,7 @@ class interimData(Rules):
         "Production",
         "Administration",
     )
-    intData = []
+    intData = []  # yo hold the user's dataset
 
     def __init__(self, years, incLines, expLines, infoType):
         super().__init__(years, incLines, expLines, infoType)
@@ -110,6 +110,8 @@ class interimData(Rules):
     def generateVarExp(self):
         print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
         print("----------------------")
+
+        varExpData = []
         rowData = []
         expenditureTuple = tuple(self.expenditureType.items())
 
@@ -154,12 +156,22 @@ class interimData(Rules):
                         + "monthly transactions"
                         + "\t"
                         + str(randint(1, 3000000) / 100)
-                        #             + "\t"
-                        #             + expenditureClassification
                     )
                     rowData.append(row)
 
-        return rowData
+        del varExpData[::]
+        varExpData += rowData
+
+        # transferring data to the class storage
+        self.intData += varExpData
+        return None
+
+    def generateFixExp(self):
+
+        print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
+        print("----------------------")
+        rowData = []
+        expenditureTuple = tuple(self.expenditureType.items())
 
     def createDataSet(self):
         # deleting any previous stored data
@@ -170,13 +182,16 @@ class interimData(Rules):
             # generating the actual amounts
             self.infoType = "Actual"
             self.generateIncData()
+            self.generateVarExp()
 
             # generating budget amounts
             self.infoType = "Budget"
             self.generateIncData()
+            self.generateVarExp()
 
         else:
             self.generateIncData()
+            self.generateVarExp()
 
         return self.intData
 
