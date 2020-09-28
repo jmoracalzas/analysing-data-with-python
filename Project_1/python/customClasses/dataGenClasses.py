@@ -47,11 +47,11 @@ class Rules:
 
 class interimData(Rules):
     expenditureType = {
-        # data structure--> type:[classification, %_sales,%_dist,%_prod,%_admin]
+        # data structure--> type:[classification, %_sales,%_dist,%_prod,%_admin, max_cost]
         "Purchase of materials": ["variable", 0, 0, 100, 0],
-        "Rent": ["fixed", 10, 10, 30, 50],
+        "Rent": ["fixed", 10, 10, 30, 50, 4750],
         "Electricity": ["variable", 15, 10, 50, 25],
-        "Salaries": ["fixed", 2500, 4000, 7500, 1000],
+        "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
     }
 
     incomeType = ("Sale of products", "Rendering of services")
@@ -120,12 +120,13 @@ class interimData(Rules):
                 for inc in range(self.getExpLinesMonth()):
                     period = i[j]
 
-                    # to exclude fixed costs as they will be added separately
+                    # to include fixed costs as they will be added separately
                     # to select a random expenditure
+
                     randomExpenditure = choice(expenditureTuple)
                     expType = randomExpenditure[0]
 
-                    # # to determine if it is fixed or variable
+                    # to determine if it is fixed or variable
                     expenditureClassification = randomExpenditure[1][0]
 
                     while expenditureClassification == "fixed":
@@ -145,13 +146,13 @@ class interimData(Rules):
                         + "\t"
                         + self.infoType
                         + "\t"
-                        + "Expenses"
+                        + "Expenditure"
                         + "\t"
-                        + expType
+                        # + expType
                         + "\t"
                         + costCentre
                         + "\t"
-                        + expType
+                        # + expType
                         + " "
                         + "monthly transactions"
                         + "\t"
@@ -170,28 +171,50 @@ class interimData(Rules):
 
         fixedExpData = []
         rowData = []
-        expenditureTuple = tuple(self.expenditureType.items())
+
+        # to filter fixed expenditure
+        fixedExpItems = list(
+            filter(lambda elem: elem[1][0] == "fixed", self.expenditureType.items())
+        )
+        print(fixedExpItems[0][0])
 
         for i in self.generateReportingDates():
             for j in range(12):
+                for item in fixedExpItems:
 
-                # to exclude variable costs as they will be added separately
-                # to select a random expenditure
-                randomExpenditure = choice(expenditureTuple)
-                expType = randomExpenditure[0]
+                    period = i[j]
 
-                # to determine if it is fixed or variable
-                expenditureClassification = randomExpenditure[1][0]
+                    costCentre = "Administration"
+                    expType = item[0]
+                    amount = str(item[-1])
 
-                while expenditureClassification == "variable":
-                    randomExpenditure = choice(expenditureTuple)
-                    expType = randomExpenditure[0]
-                    expenditureClassification = randomExpenditure[1][0]
+                    # preparing the data
+                    row = (
+                        period
+                        + "\t"
+                        + self.infoType
+                        + "\t"
+                        + "Expenditure"
+                        + "\t"
+                        + expType
+                        + "\t"
+                        + costCentre
+                        + "\t"
+                        + expType
+                        + " "
+                        + "monthly transactions"
+                        + "\t"
+                        + amount
+                    )
+                    rowData.append(row)
 
-                # to generate a cost centre different than "Sales"
-                costCentre = "Administration"
+        del fixedExpData[::]
+        fixedExpData += rowData
 
-                print(j, costCentre)
+        # transferring data to the class storage
+        self.intData += fixedExpData
+
+        return None
 
     def createDataSet(self):
         # deleting any previous stored data
@@ -203,15 +226,17 @@ class interimData(Rules):
             self.infoType = "Actual"
             self.generateIncData()
             self.generateVarExp()
+            self.generateFixExp()
 
             # generating budget amounts
             self.infoType = "Budget"
             self.generateIncData()
             self.generateVarExp()
+            self.generateFixExp()
 
         else:
-            # self.generateIncData()
-            # self.generateVarExp()
+            self.generateIncData()
+            self.generateVarExp()
             self.generateFixExp()
 
         return self.intData
