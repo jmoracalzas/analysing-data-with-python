@@ -148,11 +148,11 @@ class interimData(Rules):
                         + "\t"
                         + "Expenditure"
                         + "\t"
-                        # + expType
+                        + expType
                         + "\t"
                         + costCentre
                         + "\t"
-                        # + expType
+                        + expType
                         + " "
                         + "monthly transactions"
                         + "\t"
@@ -176,7 +176,7 @@ class interimData(Rules):
         fixedExpItems = list(
             filter(lambda elem: elem[1][0] == "fixed", self.expenditureType.items())
         )
-        print(fixedExpItems[0][0])
+        # print(fixedExpItems[0][0])
 
         for i in self.generateReportingDates():
             for j in range(12):
@@ -186,7 +186,7 @@ class interimData(Rules):
 
                     costCentre = "Administration"
                     expType = item[0]
-                    amount = str(item[-1])
+                    amount = str(item[-1][-1])
 
                     # preparing the data
                     row = (
