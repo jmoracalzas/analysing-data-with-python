@@ -121,7 +121,7 @@ class GuiWindow:
         # Expenditure sections
         self.expLinesLabel = ttk.Label(
             self.basicSettings,
-            text="How many expenditure transactions would you like to generate every month?",
+            text="How many variable expenditure transactions would you like to generate every month?",
             wraplength=250,
             justify="left",
         ).grid(row=2, column=0, sticky="w", pady=10, padx=5)
