@@ -224,22 +224,20 @@ class interimData(Rules):
 
             # generating the actual amounts
             self.infoType = "Actual"
-            self.generateIncData()
-            self.generateVarExp()
-            self.generateFixExp()
+            self.appendData()
 
             # generating budget amounts
             self.infoType = "Budget"
-            self.generateIncData()
-            self.generateVarExp()
-            self.generateFixExp()
-
+            self.appendData()
         else:
-            self.generateIncData()
-            self.generateVarExp()
-            self.generateFixExp()
-
+            self.appendData()
         return self.intData
+
+    # to append the lines at the same time
+    def appendData(self):
+        self.generateIncData()
+        self.generateVarExp()
+        self.generateFixExp()
 
 
 def main():
