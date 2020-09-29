@@ -187,12 +187,20 @@ class GuiWindow:
 
     # This function created the interimData object and generates the dataset
     def buildDataCallBack(self):
-        dataSet = interimData(
-            self.userSettings[0],  # years
-            self.userSettings[1],  # noIncLines
-            self.userSettings[2],  # no ExpLines
-            self.userSettings[3],  # dataType
-        )
+        try:
+            dataSet = interimData(
+                self.userSettings[0],  # years
+                self.userSettings[1],  # noIncLines
+                self.userSettings[2],  # no ExpLines
+                self.userSettings[3],  # dataType
+            )
+        except IndexError:
+            messagebox.showinfo(
+                "Basic Settings",
+                message=(
+                    "Please complete the settings and click 'set' before generating the output"
+                ),
+            )
 
         # testing
         print(dataSet.createDataSet())
