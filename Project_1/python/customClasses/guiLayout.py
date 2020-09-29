@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+import sys
 
 from dataGenClasses import Rules, interimData
 
@@ -187,21 +188,31 @@ class GuiWindow:
 
     # This function created the interimData object and generates the dataset
     def buildDataCallBack(self):
-        dataSet = interimData(
-            self.userSettings[0],  # years
-            self.userSettings[1],  # noIncLines
-            self.userSettings[2],  # no ExpLines
-            self.userSettings[3],  # dataType
-        )
+        try:
+            dataSet = interimData(
+                self.userSettings[0],  # years
+                self.userSettings[1],  # noIncLines
+                self.userSettings[2],  # no ExpLines
+                self.userSettings[3],  # dataType
+            )
+            ############################################################
+            # testing
+            ############################################################
+            print(dataSet.createDataSet())
 
-        # testing
-        print(dataSet.createDataSet())
+        except IndexError:
+            messagebox.showinfo(
+                "Basic Settings",
+                message=(
+                    "Please complete the settings and click 'set' before generating the output"
+                ),
+            )
 
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
 
     def exitApp(self):
-        exit()
+        sys.exit(0)
 
 
 def main():

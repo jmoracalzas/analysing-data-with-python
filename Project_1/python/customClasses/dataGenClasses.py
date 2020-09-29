@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
-from random import choice, randint  # random
+from random import choice, randint, random  # random
 
 # from sys import path
 
@@ -52,6 +52,7 @@ class interimData(Rules):
         "Rent": ["fixed", 10, 10, 30, 50, 4750],
         "Electricity": ["variable", 15, 10, 50, 25],
         "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
+        "Fuel": ["variable", 0, 55, 40, 5],
     }
 
     incomeType = ("Sale of products", "Rendering of services")
@@ -108,35 +109,24 @@ class interimData(Rules):
         return None
 
     def generateVarExp(self):
-        print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
-        print("----------------------")
-
         varExpData = []
         rowData = []
-        expenditureTuple = tuple(self.expenditureType.items())
+
+        # creating a list of variable expenditure
+        varExpItems = list(
+            filter(lambda elem: elem[1][0] == "variable", self.expenditureType.items(),)
+        )
 
         for i in self.generateReportingDates():
             for j in range(12):
                 for inc in range(self.getExpLinesMonth()):
                     period = i[j]
 
-                    # to include fixed costs as they will be added separately
-                    # to select a random expenditure
-
-                    randomExpenditure = choice(expenditureTuple)
-                    expType = randomExpenditure[0]
-
-                    # to determine if it is fixed or variable
-                    expenditureClassification = randomExpenditure[1][0]
-
-                    while expenditureClassification == "fixed":
-                        randomExpenditure = choice(expenditureTuple)
-                        expType = randomExpenditure[0]
-                        expenditureClassification = randomExpenditure[1][0]
+                    randomExpenditure = choice(varExpItems)
+                    expType = str(randomExpenditure[0])
 
                     # to generate a cost centre different than "Sales"
                     costCentre = choice(self.costCentre)
-
                     while costCentre == "Sales":
                         costCentre = choice(self.costCentre)
 
@@ -224,22 +214,20 @@ class interimData(Rules):
 
             # generating the actual amounts
             self.infoType = "Actual"
-            self.generateIncData()
-            self.generateVarExp()
-            self.generateFixExp()
+            self.appendData()
 
             # generating budget amounts
             self.infoType = "Budget"
-            self.generateIncData()
-            self.generateVarExp()
-            self.generateFixExp()
-
+            self.appendData()
         else:
-            self.generateIncData()
-            self.generateVarExp()
-            self.generateFixExp()
-
+            self.appendData()
         return self.intData
+
+    # to append the lines at the same time
+    def appendData(self):
+        self.generateIncData()
+        self.generateVarExp()
+        self.generateFixExp()
 
 
 def main():
