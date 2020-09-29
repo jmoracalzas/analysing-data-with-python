@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
-from random import choice, randint  # random
+from random import choice, randint, random  # random
 
 # from sys import path
 
@@ -108,35 +108,24 @@ class interimData(Rules):
         return None
 
     def generateVarExp(self):
-        print("Expenditure Lines: ", self.getNumYears() * 12 * self.getExpLinesMonth())
-        print("----------------------")
-
         varExpData = []
         rowData = []
-        expenditureTuple = tuple(self.expenditureType.items())
+
+        # creating a list of variable expenditure
+        varExpItems = list(
+            filter(lambda elem: elem[1][0] == "variable", self.expenditureType.items(),)
+        )
 
         for i in self.generateReportingDates():
             for j in range(12):
                 for inc in range(self.getExpLinesMonth()):
                     period = i[j]
 
-                    # to include fixed costs as they will be added separately
-                    # to select a random expenditure
-
-                    randomExpenditure = choice(expenditureTuple)
-                    expType = randomExpenditure[0]
-
-                    # to determine if it is fixed or variable
-                    expenditureClassification = randomExpenditure[1][0]
-
-                    while expenditureClassification == "fixed":
-                        randomExpenditure = choice(expenditureTuple)
-                        expType = randomExpenditure[0]
-                        expenditureClassification = randomExpenditure[1][0]
+                    randomExpenditure = choice(varExpItems)
+                    expType = str(randomExpenditure[0])
 
                     # to generate a cost centre different than "Sales"
                     costCentre = choice(self.costCentre)
-
                     while costCentre == "Sales":
                         costCentre = choice(self.costCentre)
 
