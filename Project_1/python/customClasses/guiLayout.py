@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from tkinter import messagebox
+import sys
 
 from dataGenClasses import Rules, interimData
 
@@ -194,6 +195,11 @@ class GuiWindow:
                 self.userSettings[2],  # no ExpLines
                 self.userSettings[3],  # dataType
             )
+            ############################################################
+            # testing
+            ############################################################
+            print(dataSet.createDataSet())
+
         except IndexError:
             messagebox.showinfo(
                 "Basic Settings",
@@ -202,14 +208,11 @@ class GuiWindow:
                 ),
             )
 
-        # testing
-        print(dataSet.createDataSet())
-
     def exportCallBack(self):
         messagebox.showinfo(title="Build Data", message="Work in progress")
 
     def exitApp(self):
-        exit()
+        sys.exit(0)
 
 
 def main():
