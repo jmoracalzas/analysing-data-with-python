@@ -15,24 +15,25 @@ This final block of the project will be an introduction to manipulating data in 
 
 ## Tools and programming languages <br />
 1. Python 3
-2. Microsoft Excel and text files
+2. Python modules: Python Standard Library, Tkinter, Openpyxl
+3. Microsoft Excel and text files
 
 ## Status
 |**Element**                    |**Main Script**       |**User Interface**|
 |:---                           |:---                  |:---              |
 |Basic input of parameters      |Complete              |Complete          |
-|Generation of interim data     |In progress           |Not applicable    |
-|Output creation                |Pending               |Pending           |
+|Generation of interim data     |Complete              |Not applicable    |
+|Output creation                |In progress           |Pending           |
 |GUI styling                    |Not applicable        |Pending           |
 |Customisation of user settings |Pending               |Pending           |
-|Code optimisation              |Pending               |Not applicable    |
+|Code optimisation              |In progress           |Not applicable    |
 
 ## Documentation <br />
 ### Requirements
 The system must
 - allow the user to input some parameters
 - generate sample data based on user input
-- analyse the sample data and output the results
+- store the created data in different file formats
 
 ### User stories
 - As an analyst, I want to set the rules to generate the sample data so that the information is useful to other people
@@ -60,9 +61,10 @@ The system must
 |:---                                   |:---                                     |
 |**Attributes**                         |**Responsibilities**                     |
 | + expenditureType --> tuple(strings)  |                                         |
-| + incomeType --> tuple(strings)       | + generateIncData()                     |
-| + costCentre --> tuple(strings)       | + generateExpData()                     |
-| + intData --> list()                  |                                         |
+| + incomeType --> tuple(strings)       | - generateIncData()                     |
+| + costCentre --> tuple(strings)       | - generateVarExp()                      |
+| + intData --> list()                  | - generateFixedExp()                    |
+|                                       | - appendData()                          | 
 
 TThe interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br />
 <br />
@@ -70,5 +72,5 @@ TThe interimDataset will feed from the following information: 1) cost centre and
 |**Outcome**                   |                    |
 |:---                          |:---                |
 |**Attributes**                |**Responsibilities**|
-|- setColumns                  |- generateReport()  |
+|- setColumns                  |- txtOutput()       |
 |                              | + exportReport()   |
