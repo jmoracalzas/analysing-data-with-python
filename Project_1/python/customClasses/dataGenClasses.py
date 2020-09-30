@@ -2,10 +2,6 @@
 from datetime import date, timedelta
 from random import choice, randint, random  # random
 
-# from sys import path
-
-# path.append("/Project_1/python/customClasses")
-
 
 class Rules:
 
@@ -63,7 +59,8 @@ class interimData(Rules):
         "Production",
         "Administration",
     )
-    intData = []  # yo hold the user's dataset
+
+    intData = []  # to hold the user's dataset
 
     def __init__(self, years, incLines, expLines, infoType):
         super().__init__(years, incLines, expLines, infoType)
@@ -221,6 +218,7 @@ class interimData(Rules):
             self.appendData()
         else:
             self.appendData()
+
         return self.intData
 
     # to append the lines at the same time

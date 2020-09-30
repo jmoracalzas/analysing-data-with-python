@@ -5,8 +5,13 @@ import sys
 
 from dataGenClasses import Rules, interimData
 
+# from exportOutput import test
+
 
 class GuiWindow:
+    # to store the generated interim data before creating the files
+    userData = []
+
     def __init__(self, master):
         # creating a tuple to store the user input
         self.userSettings = []
@@ -138,8 +143,17 @@ class GuiWindow:
         self.dataTypeGroup = ttk.LabelFrame(
             self.dataTypeSet, text="Type of data to generate"
         )
-        self.dataTypeGroup.pack(anchor="w", padx=15, pady=10)
+        self.dataTypeGroup.pack(anchor="w", padx=15, pady=10, side=LEFT)
+        ##########################################################################
+        self.outputTypeGroup = ttk.LabelFrame(
+            self.dataTypeSet, text="Select the output type", border=10
+        )
+        self.outputTypeGroup.pack(anchor="e", padx=15, pady=10, side=LEFT)
 
+        x = ttk.Label(self.outputTypeGroup, text="hello").pack()
+        y = ttk.Label(self.outputTypeGroup, text="hello").pack()
+        z = ttk.Label(self.outputTypeGroup, text="hello").pack()
+        ############################################################################
         self.infoType = StringVar()
         self.infoType.set("Actual")
 
@@ -195,10 +209,10 @@ class GuiWindow:
                 self.userSettings[2],  # no ExpLines
                 self.userSettings[3],  # dataType
             )
-            ############################################################
-            # testing
-            ############################################################
-            print(dataSet.createDataSet())
+
+            # Storing the user data in this class before passing it
+            # into the exportOutput module to generate the relevant output files
+            self.userData = dataSet.createDataSet()
 
         except IndexError:
             messagebox.showinfo(
@@ -208,9 +222,13 @@ class GuiWindow:
                 ),
             )
 
+    ###############################################################################
     def exportCallBack(self):
-        messagebox.showinfo(title="Build Data", message="Work in progress")
+        print("List shown below:")
+        print(self.userData)
+        # messagebox.showinfo(title="Build Data", message="Work in progress")
 
+    ################################################################################
     def exitApp(self):
         sys.exit(0)
 
