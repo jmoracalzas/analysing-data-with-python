@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
-from random import choice, randint, random  # random
+from random import choice, randint
 
 
 class Rules:
@@ -25,12 +25,14 @@ class Rules:
     ]
 
     # used to determine the total number of lines to generate
+    # and to hold the basic categories needed to generate data
     def __init__(self, years, incLines, expLines, infoType):
         self.__setNoYears = years
         self.__setIncLines = incLines
         self.__setExpLines = int(expLines)
         self.infoType = infoType
         self.startDate = date.today()
+        self.__costCentre = self.costCentre
 
     def getNumYears(self):
         return self.__setNoYears
@@ -59,8 +61,7 @@ class Rules:
         return calendar
 
     def getCostCentres(self):
-        self._costCentre = tuple(self.costCentre)
-        return self._costCentre
+        return self.__costCentre
 
 
 class interimData(Rules):

@@ -3,12 +3,13 @@ from tkinter import ttk, messagebox
 import sys
 
 from dataGenClasses import interimData
-from exportOutput import output
+from exportOutput import txtFiles
 
 
 class GuiWindow:
     # to store the generated interim data before creating the files
     userData = []
+    ccList = []
 
     def __init__(self, master):
         # creating a tuple to store the user input
@@ -198,7 +199,8 @@ class GuiWindow:
                 title="Error", message="Incorrect input. Please try again."
             )
 
-    # This function created the interimData object and generates the dataset
+    # This function create the interimData object and generates the dataset
+    # and stores the categories in preparation to create the output files
     def buildDataCallBack(self):
         try:
             dataSet = interimData(
@@ -207,13 +209,12 @@ class GuiWindow:
                 self.userSettings[2],  # no ExpLines
                 self.userSettings[3],  # dataType
             )
-
-            # Storing the user data in this class before passing it
-            # into the exportOutput module to generate the relevant output files
+            # Storing the user data in this class variable before passing it
             self.userData = dataSet.createDataSet()
-            ##############################################################################
-            # print(dataSet.getCostCentres())
-            ##############################################################################
+
+            # obtaining categories before creating the output files
+            self.ccList = tuple(dataSet.getCostCentres())
+
         except IndexError:
             messagebox.showinfo(
                 "Basic Settings",
@@ -224,10 +225,8 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        expData = output()
-        expData.expTXT_CC()
-        # print(self.userData)
-
+        txtOutput = txtFiles(self.ccList)
+        txtOutput.createTXTfiles()
         # messagebox.showinfo(title="Build Data", message="Work in progress")
 
     ################################################################################

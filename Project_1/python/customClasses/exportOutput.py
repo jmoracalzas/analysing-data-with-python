@@ -1,11 +1,21 @@
-class output:
-    def expTXT_CC(self):
-        test = ["cc1", "cc2", "cc3", "cc4"]
+class txtFiles:
+    def __init__(self, ccList):
+        self.__ccList = ccList
+
+    def createTXTfiles(self):
+        self.expCostCentre()
+
+    def expCostCentre(self):
 
         with open(
             "./Project_1/python/output/txt_files/costCentre.txt", "tw"
         ) as costCentres:
+            # creating the heading
+            heading = "Cost Centre"
+            costCentres.write(heading + "\n")
+            costCentres.write(str((len(heading) + 10) * "-") + "\n")
 
-            costCentres.write("Cost Centre\n")  # header
-            for cc in test:
+            # generating the data
+            for cc in self.__ccList:
                 costCentres.write(cc + "\n")
+
