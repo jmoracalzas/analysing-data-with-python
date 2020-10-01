@@ -1,18 +1,38 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
-from random import choice, randint, random  # random
+from random import choice, randint
 
 
 class Rules:
 
     # To store the initial parameters set by the user
+    expenditureType = {
+        # data structure--> type:[classification, %_sales,%_dist,%_prod,%_admin, max_cost]
+        "Purchase of materials": ["variable", 0, 0, 100, 0],
+        "Rent": ["fixed", 10, 10, 30, 50, 4750],
+        "Electricity": ["variable", 15, 10, 50, 25],
+        "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
+        "Fuel": ["variable", 0, 55, 40, 5],
+    }
+
+    incomeType = ["Sale of products", "Rendering of services"]
+
+    costCentre = [
+        "Sales",
+        "Distribution",
+        "Production",
+        "Administration",
+    ]
+
     # used to determine the total number of lines to generate
+    # and to hold the basic categories needed to generate data
     def __init__(self, years, incLines, expLines, infoType):
         self.__setNoYears = years
         self.__setIncLines = incLines
         self.__setExpLines = int(expLines)
         self.infoType = infoType
         self.startDate = date.today()
+        self.__costCentre = self.costCentre
 
     def getNumYears(self):
         return self.__setNoYears
@@ -40,25 +60,11 @@ class Rules:
         )
         return calendar
 
+    def getCostCentres(self):
+        return self.__costCentre
+
 
 class interimData(Rules):
-    expenditureType = {
-        # data structure--> type:[classification, %_sales,%_dist,%_prod,%_admin, max_cost]
-        "Purchase of materials": ["variable", 0, 0, 100, 0],
-        "Rent": ["fixed", 10, 10, 30, 50, 4750],
-        "Electricity": ["variable", 15, 10, 50, 25],
-        "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
-        "Fuel": ["variable", 0, 55, 40, 5],
-    }
-
-    incomeType = ("Sale of products", "Rendering of services")
-
-    costCentre = (
-        "Sales",
-        "Distribution",
-        "Production",
-        "Administration",
-    )
 
     intData = []  # to hold the user's dataset
 

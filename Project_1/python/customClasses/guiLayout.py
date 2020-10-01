@@ -1,16 +1,15 @@
 from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import sys
 
-from dataGenClasses import Rules, interimData
-
-# from exportOutput import test
+from dataGenClasses import interimData
+from exportOutput import txtFiles
 
 
 class GuiWindow:
     # to store the generated interim data before creating the files
     userData = []
+    ccList = []
 
     def __init__(self, master):
         # creating a tuple to store the user input
@@ -146,7 +145,7 @@ class GuiWindow:
         self.dataTypeGroup.pack(anchor="w", padx=15, pady=10, side=LEFT)
         ##########################################################################
         self.outputTypeGroup = ttk.LabelFrame(
-            self.dataTypeSet, text="Select the output type", border=10
+            self.dataTypeSet, text="Select the type of output", border=10
         )
         self.outputTypeGroup.pack(anchor="e", padx=15, pady=10, side=LEFT)
 
@@ -200,7 +199,8 @@ class GuiWindow:
                 title="Error", message="Incorrect input. Please try again."
             )
 
-    # This function created the interimData object and generates the dataset
+    # This function create the interimData object and generates the dataset
+    # and stores the categories in preparation to create the output files
     def buildDataCallBack(self):
         try:
             dataSet = interimData(
@@ -209,10 +209,11 @@ class GuiWindow:
                 self.userSettings[2],  # no ExpLines
                 self.userSettings[3],  # dataType
             )
-
-            # Storing the user data in this class before passing it
-            # into the exportOutput module to generate the relevant output files
+            # Storing the user data in this class variable before passing it
             self.userData = dataSet.createDataSet()
+
+            # obtaining categories before creating the output files
+            self.ccList = tuple(dataSet.getCostCentres())
 
         except IndexError:
             messagebox.showinfo(
@@ -224,9 +225,9 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        print("List shown below:")
-        print(self.userData)
-        # messagebox.showinfo(title="Build Data", message="Work in progress")
+        txtOutput = txtFiles(self.ccList)
+
+        txtOutput.createTXTfiles()
 
     ################################################################################
     def exitApp(self):
