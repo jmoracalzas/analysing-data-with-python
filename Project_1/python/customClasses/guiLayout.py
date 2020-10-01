@@ -1,11 +1,9 @@
 from tkinter import *
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox
 import sys
 
-from dataGenClasses import Rules, interimData
-
-# from exportOutput import test
+from dataGenClasses import interimData
+from exportOutput import output
 
 
 class GuiWindow:
@@ -213,7 +211,9 @@ class GuiWindow:
             # Storing the user data in this class before passing it
             # into the exportOutput module to generate the relevant output files
             self.userData = dataSet.createDataSet()
-
+            ##############################################################################
+            # print(dataSet.getCostCentres())
+            ##############################################################################
         except IndexError:
             messagebox.showinfo(
                 "Basic Settings",
@@ -224,8 +224,10 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        print("List shown below:")
-        print(self.userData)
+        expData = output()
+        expData.expTXT_CC()
+        # print(self.userData)
+
         # messagebox.showinfo(title="Build Data", message="Work in progress")
 
     ################################################################################
