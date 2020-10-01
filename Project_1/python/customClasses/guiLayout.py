@@ -145,7 +145,7 @@ class GuiWindow:
         self.dataTypeGroup.pack(anchor="w", padx=15, pady=10, side=LEFT)
         ##########################################################################
         self.outputTypeGroup = ttk.LabelFrame(
-            self.dataTypeSet, text="Select the output type", border=10
+            self.dataTypeSet, text="Select the type of output", border=10
         )
         self.outputTypeGroup.pack(anchor="e", padx=15, pady=10, side=LEFT)
 
@@ -226,8 +226,8 @@ class GuiWindow:
     ###############################################################################
     def exportCallBack(self):
         txtOutput = txtFiles(self.ccList)
+
         txtOutput.createTXTfiles()
-        # messagebox.showinfo(title="Build Data", message="Work in progress")
 
     ################################################################################
     def exitApp(self):
