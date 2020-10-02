@@ -25,9 +25,17 @@ class TXTFiles:
                     "Expenditure\tClassification\t%_Sales\t%_Distribution\t%_Production\t%Admin\tMax_Cost\n"
                 )
 
-                # print(list)
                 for item in list.items():
-                    outputFile.write(item[0] + "\n")
+                    line = "{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}".format(
+                        item[0],  # type
+                        item[1][0],  # classification
+                        item[1][1],  #%_Sales
+                        item[1][2],  #%_Distribution
+                        item[1][3],  #%_Production
+                        item[1][4],  #%_Admin
+                        item[1][5],  # Max_Cost
+                    )
+                    outputFile.write(line + "\n")
 
         return None
 

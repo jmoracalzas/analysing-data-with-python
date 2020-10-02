@@ -8,11 +8,11 @@ class Rules:
     # To store the initial parameters set by the user
     expenditureType = {
         # data structure--> type:[classification, %_sales,%_dist,%_prod,%_admin, max_cost]
-        "Purchase of materials": ["variable", 0, 0, 100, 0],
+        "Purchase of materials": ["variable", 0, 0, 100, 0, 0],
         "Rent": ["fixed", 10, 10, 30, 50, 4750],
-        "Electricity": ["variable", 15, 10, 50, 25],
+        "Electricity": ["variable", 15, 10, 50, 25, 0],
         "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
-        "Fuel": ["variable", 0, 55, 40, 5],
+        "Fuel": ["variable", 0, 55, 40, 5, 0],
     }
 
     incomeType = ["Sale of products", "Rendering of services"]
