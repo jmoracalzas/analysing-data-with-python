@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 import sys
 
 from dataGenClasses import interimData
-from exportOutput import txtFiles
+from exportOutput import TXTFiles
 
 
 class GuiWindow:
@@ -227,7 +227,7 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        txtOutput = txtFiles(self.ccList, self.incList)
+        txtOutput = TXTFiles(self.ccList, self.incList)
 
         txtOutput.createTXTfiles()
 

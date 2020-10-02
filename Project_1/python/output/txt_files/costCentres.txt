@@ -1,5 +1,5 @@
-Cost Centre
----------------------
+Cost Centres
+----------------------
 Sales
 Distribution
 Production
