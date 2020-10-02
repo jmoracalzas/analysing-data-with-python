@@ -1,0 +1,8 @@
+Expenditure type
+--------------------------
+Expenditure	Classification	%_Sales	%_Distribution	%_Production	%Admin	Max_Cost
+Purchase of materials
+Rent
+Electricity
+Salaries
+Fuel

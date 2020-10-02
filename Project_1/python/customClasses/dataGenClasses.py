@@ -34,6 +34,7 @@ class Rules:
         self.startDate = date.today()
         self.__costCentre = self.costCentre
         self.__incList = self.incomeType
+        self.__expDict = self.expenditureType
 
     def getNumYears(self):
         return self.__setNoYears
@@ -66,6 +67,9 @@ class Rules:
 
     def getIncList(self):
         return self.__incList
+
+    def getExpList(self):
+        return self.__expDict
 
 
 class interimData(Rules):
@@ -239,7 +243,7 @@ class interimData(Rules):
 
 
 def main():
-    print()
+    pass
 
 
 if __name__ == "__main__":

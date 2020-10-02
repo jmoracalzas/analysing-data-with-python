@@ -11,6 +11,7 @@ class GuiWindow:
     userData = []
     ccList = []
     incList = []
+    expDict = {}
 
     def __init__(self, master):
         # creating a tuple to store the user input
@@ -216,6 +217,7 @@ class GuiWindow:
             # obtaining categories before creating the output files
             self.ccList = tuple(dataSet.getCostCentres())
             self.incList = tuple(dataSet.getIncList())
+            self.expDict = dataSet.getExpList()
 
         except IndexError:
             messagebox.showinfo(
@@ -227,8 +229,7 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        txtOutput = TXTFiles(self.ccList, self.incList)
-
+        txtOutput = TXTFiles(self.ccList, self.incList, self.expDict)
         txtOutput.createTXTfiles()
 
     ################################################################################
