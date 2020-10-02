@@ -229,7 +229,7 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        txtOutput = TXTFiles(self.ccList, self.incList, self.expDict)
+        txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
         txtOutput.createTXTfiles()
 
     ################################################################################

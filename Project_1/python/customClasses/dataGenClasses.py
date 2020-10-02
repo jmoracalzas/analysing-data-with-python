@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
 from random import choice, randint
+from tkinter.constants import SEL_FIRST
 
 
 class Rules:

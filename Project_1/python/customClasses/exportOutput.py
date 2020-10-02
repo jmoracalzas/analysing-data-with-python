@@ -1,8 +1,9 @@
 class TXTFiles:
-    def __init__(self, ccList, incList, expDict):
+    def __init__(self, ccList, incList, expDict, dataList):
         self.__ccList = ccList
         self.__incList = incList
         self.__expDict = expDict
+        self.__userData = dataList
         self.__path = "./Project_1/python/output/txt_files/"
 
     # creating the txt file and producing the desired output
@@ -37,12 +38,23 @@ class TXTFiles:
                     )
                     outputFile.write(line + "\n")
 
+            elif fileName == "dataset.txt":
+                outputFile.write(
+                    "Period\tType\tCategory\tAccount\tCost Centre\tDescription\tAmount\n"
+                )
+                # print(list)
+                for item in list:
+                    outputFile.write(item + "\n")
+
         return None
 
     def createTXTfiles(self):
         self.incTypes()
         self.costCentre()
         self.expTypes()
+        self.genDataSet()
+
+        return None
 
     # exporting the cost centres as a .txt file
     def costCentre(self):
@@ -57,4 +69,8 @@ class TXTFiles:
     def expTypes(self):
         self.newFile(title="Expenditure type", fileName="expenditure.txt")
         self.appendSettings(fileName="expenditure.txt", list=self.__expDict)
+
+    def genDataSet(self):
+        self.newFile(title="Generated data", fileName="dataset.txt")
+        self.appendSettings(fileName="dataset.txt", list=self.__userData)
 
