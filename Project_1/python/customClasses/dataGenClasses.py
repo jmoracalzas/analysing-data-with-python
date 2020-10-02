@@ -33,6 +33,7 @@ class Rules:
         self.infoType = infoType
         self.startDate = date.today()
         self.__costCentre = self.costCentre
+        self.__incList = self.incomeType
 
     def getNumYears(self):
         return self.__setNoYears
@@ -62,6 +63,9 @@ class Rules:
 
     def getCostCentres(self):
         return self.__costCentre
+
+    def getIncList(self):
+        return self.__incList
 
 
 class interimData(Rules):
