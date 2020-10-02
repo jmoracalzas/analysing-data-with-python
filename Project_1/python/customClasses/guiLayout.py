@@ -3,13 +3,15 @@ from tkinter import ttk, messagebox
 import sys
 
 from dataGenClasses import interimData
-from exportOutput import txtFiles
+from exportOutput import TXTFiles
 
 
 class GuiWindow:
     # to store the generated interim data before creating the files
     userData = []
     ccList = []
+    incList = []
+    expDict = {}
 
     def __init__(self, master):
         # creating a tuple to store the user input
@@ -214,6 +216,8 @@ class GuiWindow:
 
             # obtaining categories before creating the output files
             self.ccList = tuple(dataSet.getCostCentres())
+            self.incList = tuple(dataSet.getIncList())
+            self.expDict = dataSet.getExpList()
 
         except IndexError:
             messagebox.showinfo(
@@ -225,8 +229,7 @@ class GuiWindow:
 
     ###############################################################################
     def exportCallBack(self):
-        txtOutput = txtFiles(self.ccList)
-
+        txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
         txtOutput.createTXTfiles()
 
     ################################################################################

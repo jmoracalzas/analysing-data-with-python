@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from datetime import date, timedelta
 from random import choice, randint
+from tkinter.constants import SEL_FIRST
 
 
 class Rules:
@@ -8,11 +9,11 @@ class Rules:
     # To store the initial parameters set by the user
     expenditureType = {
         # data structure--> type:[classification, %_sales,%_dist,%_prod,%_admin, max_cost]
-        "Purchase of materials": ["variable", 0, 0, 100, 0],
+        "Purchase of materials": ["variable", 0, 0, 100, 0, 0],
         "Rent": ["fixed", 10, 10, 30, 50, 4750],
-        "Electricity": ["variable", 15, 10, 50, 25],
+        "Electricity": ["variable", 15, 10, 50, 25, 0],
         "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
-        "Fuel": ["variable", 0, 55, 40, 5],
+        "Fuel": ["variable", 0, 55, 40, 5, 0],
     }
 
     incomeType = ["Sale of products", "Rendering of services"]
@@ -33,6 +34,8 @@ class Rules:
         self.infoType = infoType
         self.startDate = date.today()
         self.__costCentre = self.costCentre
+        self.__incList = self.incomeType
+        self.__expDict = self.expenditureType
 
     def getNumYears(self):
         return self.__setNoYears
@@ -62,6 +65,12 @@ class Rules:
 
     def getCostCentres(self):
         return self.__costCentre
+
+    def getIncList(self):
+        return self.__incList
+
+    def getExpList(self):
+        return self.__expDict
 
 
 class interimData(Rules):
@@ -235,7 +244,7 @@ class interimData(Rules):
 
 
 def main():
-    print()
+    pass
 
 
 if __name__ == "__main__":
