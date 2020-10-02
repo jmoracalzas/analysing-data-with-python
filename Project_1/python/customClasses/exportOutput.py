@@ -7,6 +7,9 @@ class txtFiles:
 
     # exporting the cost centres as a txt file
     def expCostCentre(self):
+
+        # costCentres = open("./Project_1/python/output/txt_files/costCentre.txt", "tx")
+
         with open(
             "./Project_1/python/output/txt_files/costCentre.txt", "tw"
         ) as costCentres:
