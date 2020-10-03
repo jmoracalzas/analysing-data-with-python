@@ -232,6 +232,8 @@ class GuiWindow:
         txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
         txtOutput.createTXTfiles()
 
+        messagebox.showinfo(title="Export data", message="Export process successful.")
+
     ################################################################################
     def exitApp(self):
         sys.exit(0)
