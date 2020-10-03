@@ -7,6 +7,14 @@ from exportOutput import TXTFiles
 
 
 class GuiWindow:
+    # to store setting from the GUI to be passed to other functions
+    choiceTXTExp = ""
+    # choiceCSVExp = ""
+    # choiceXMLExp = ""
+    # choiceJSONExp = ""
+    # choiceExcelExp = ""
+    # choiceSQLiteExp = ""
+
     # to store the generated interim data before creating the files
     userData = []
     ccList = []
@@ -146,15 +154,48 @@ class GuiWindow:
         )
         self.dataTypeGroup.pack(anchor="w", padx=15, pady=10, side=LEFT)
         ##########################################################################
-        self.outputTypeGroup = ttk.LabelFrame(
-            self.dataTypeSet, text="Select the type of output", border=10
-        )
-        self.outputTypeGroup.pack(anchor="e", padx=15, pady=10, side=LEFT)
 
-        x = ttk.Label(self.outputTypeGroup, text="hello").pack()
-        y = ttk.Label(self.outputTypeGroup, text="hello").pack()
-        z = ttk.Label(self.outputTypeGroup, text="hello").pack()
+        # Creating the export frame options
+        self.outputTypeGroup = ttk.LabelFrame(
+            self.dataTypeSet, text="Select the type of output"
+        )
+        self.outputTypeGroup.pack(anchor="e", padx=15, pady=10)
+
+        # .txt export option
+        txtExp = BooleanVar()
+
+        ttk.Checkbutton(self.outputTypeGroup, text=".txt", variable=txtExp).pack(
+            padx=10, pady=5, anchor="w"
+        )
+        self.choiceTXTExp = txtExp.get()
+
+        # .CSV export option
+        ttk.Checkbutton(self.outputTypeGroup, text=".CSV", variable="").pack(
+            padx=10, pady=5, anchor="w"
+        )
+
+        # .XML export option
+        ttk.Checkbutton(self.outputTypeGroup, text=".XML", variable="").pack(
+            padx=10, pady=5, anchor="w"
+        )
+
+        # .JSON export option
+        ttk.Checkbutton(self.outputTypeGroup, text=".JSON", variable="").pack(
+            padx=10, pady=5, anchor="w"
+        )
+
+        # .Excel export option
+        ttk.Checkbutton(self.outputTypeGroup, text="Microsoft Excel", variable="").pack(
+            padx=10, pady=5, anchor="w"
+        )
+
+        # .SQLITE export option
+        ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable="").pack(
+            padx=10, pady=5, anchor="w"
+        )
+
         ############################################################################
+        # Determining the data type to generate
         self.infoType = StringVar()
         self.infoType.set("Actual")
 
@@ -233,6 +274,8 @@ class GuiWindow:
         txtOutput.createTXTfiles()
 
         messagebox.showinfo(title="Export data", message="Export process successful.")
+
+        print(self.choicetxtExp)
 
     ################################################################################
     def exitApp(self):
