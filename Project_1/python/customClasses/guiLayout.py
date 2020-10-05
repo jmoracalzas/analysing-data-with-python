@@ -8,9 +8,8 @@ from exportOutput import TXTFiles
 
 class GuiWindow:
     # to store setting from the GUI to be passed to other functions
-    choiceTXTExp = ""
     # choiceCSVExp = ""
-    # choiceXMLExp = ""
+    # choiceXMLExp =    ""
     # choiceJSONExp = ""
     # choiceExcelExp = ""
     # choiceSQLiteExp = ""
@@ -162,12 +161,11 @@ class GuiWindow:
         self.outputTypeGroup.pack(anchor="e", padx=15, pady=10)
 
         # .txt export option
-        txtExp = BooleanVar()
+        self.choiceTXTExp = BooleanVar()
 
-        ttk.Checkbutton(self.outputTypeGroup, text=".txt", variable=txtExp).pack(
-            padx=10, pady=5, anchor="w"
-        )
-        self.choiceTXTExp = txtExp.get()
+        ttk.Checkbutton(
+            self.outputTypeGroup, text=".txt", variable=self.choiceTXTExp
+        ).pack(padx=10, pady=5, anchor="w")
 
         # .CSV export option
         ttk.Checkbutton(self.outputTypeGroup, text=".CSV", variable="").pack(
@@ -271,11 +269,13 @@ class GuiWindow:
     ###############################################################################
     def exportCallBack(self):
         txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
-        txtOutput.createTXTfiles()
+
+        # exporting data based on the user choice
+        txtOutput.createTXTfiles() if self.choiceTXTExp.get() == 1 else print(
+            "Notihing selected"
+        )
 
         messagebox.showinfo(title="Export data", message="Export process successful.")
-
-        print(self.choicetxtExp)
 
     ################################################################################
     def exitApp(self):
