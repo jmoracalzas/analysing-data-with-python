@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+from os import truncate
 from tkinter import *
 from tkinter import ttk, messagebox
 import sys
@@ -11,7 +13,6 @@ class GuiWindow:
     # choiceCSVExp = ""
     # choiceXMLExp =    ""
     # choiceJSONExp = ""
-    # choiceExcelExp = ""
     # choiceSQLiteExp = ""
 
     # to store the generated interim data before creating the files
@@ -19,6 +20,7 @@ class GuiWindow:
     ccList = []
     incList = []
     expDict = {}
+    builtData = None
 
     def __init__(self, master):
         # creating a tuple to store the user input
@@ -103,7 +105,6 @@ class GuiWindow:
         self.settingsButton.config(text="Set", command=self.setDataCallBack)
 
     # the following functions creates the 'basic settings' widgets
-
     def basicSettingsLayout(self):
         # Number of years section
         self.yearsLabel = ttk.Label(
@@ -183,9 +184,11 @@ class GuiWindow:
         )
 
         # .Excel export option
-        ttk.Checkbutton(self.outputTypeGroup, text="Microsoft Excel", variable="").pack(
-            padx=10, pady=5, anchor="w"
-        )
+        self.choiceXLSExport = BooleanVar()
+
+        ttk.Checkbutton(
+            self.outputTypeGroup, text="Microsoft Excel", variable=self.choiceXLSExport
+        ).pack(padx=10, pady=5, anchor="w")
 
         # .SQLITE export option
         ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable="").pack(
@@ -218,6 +221,8 @@ class GuiWindow:
             value="Both",
         ).pack(anchor="w", padx=10, pady=3)
 
+    #########################################################################
+    # Generating the dataset
     # This method passes the user input to start generating the data
     def setDataCallBack(self):
         # This method stores the user settings into a list
@@ -258,6 +263,9 @@ class GuiWindow:
             self.incList = tuple(dataSet.getIncList())
             self.expDict = dataSet.getExpList()
 
+            # To marked that the interim data has been created
+            self.builtData = True
+
         except IndexError:
             messagebox.showinfo(
                 "Basic Settings",
@@ -266,18 +274,24 @@ class GuiWindow:
                 ),
             )
 
-    ###############################################################################
+    ###########################################################################
+    # Exporting the dataset
     def exportCallBack(self):
         txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
 
-        # exporting data based on the user choice
-        txtOutput.createTXTfiles() if self.choiceTXTExp.get() == 1 else print(
-            "Notihing selected"
-        )
+        if self.builtData:
 
-        messagebox.showinfo(title="Export data", message="Export process successful.")
+            # exporting data based on the user choice
+            if self.choiceTXTExp:
+                txtOutput.createTXTfiles()
+        else:
+            messagebox.showinfo(
+                title="Export data",
+                message='Press "Build Data" before exporting the output.',
+            )
 
-    ################################################################################
+    ###########################################################################
+    # Exiting the application
     def exitApp(self):
         sys.exit(0)
 
