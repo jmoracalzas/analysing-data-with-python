@@ -1,3 +1,4 @@
+from os import truncate
 from tkinter import *
 from tkinter import ttk, messagebox
 import sys
@@ -19,6 +20,7 @@ class GuiWindow:
     ccList = []
     incList = []
     expDict = {}
+    builtData = None
 
     def __init__(self, master):
         # creating a tuple to store the user input
@@ -258,6 +260,9 @@ class GuiWindow:
             self.incList = tuple(dataSet.getIncList())
             self.expDict = dataSet.getExpList()
 
+            # To marked that the interim data has been created
+            self.builtData = True
+
         except IndexError:
             messagebox.showinfo(
                 "Basic Settings",
@@ -270,12 +275,16 @@ class GuiWindow:
     def exportCallBack(self):
         txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
 
-        # exporting data based on the user choice
-        txtOutput.createTXTfiles() if self.choiceTXTExp.get() == 1 else print(
-            "Notihing selected"
-        )
+        if self.builtData:
 
-        messagebox.showinfo(title="Export data", message="Export process successful.")
+            # exporting data based on the user choice
+            if self.choiceTXTExp:
+                txtOutput.createTXTfiles()
+        else:
+            messagebox.showinfo(
+                title="Export data",
+                message='Press "Build Data" before exporting the output.',
+            )
 
     ################################################################################
     def exitApp(self):
