@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 class TXTFiles:
     def __init__(self, ccList, incList, expDict, dataList):
         self.__ccList = ccList
@@ -74,3 +75,6 @@ class TXTFiles:
         self.newFile(title="Generated data", fileName="dataset.txt")
         self.appendSettings(fileName="dataset.txt", list=self.__userData)
 
+
+class ExcelExport:
+    pass

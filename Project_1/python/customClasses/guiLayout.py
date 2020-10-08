@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from os import truncate
 from tkinter import *
 from tkinter import ttk, messagebox
@@ -12,7 +13,6 @@ class GuiWindow:
     # choiceCSVExp = ""
     # choiceXMLExp =    ""
     # choiceJSONExp = ""
-    # choiceExcelExp = ""
     # choiceSQLiteExp = ""
 
     # to store the generated interim data before creating the files
@@ -105,7 +105,6 @@ class GuiWindow:
         self.settingsButton.config(text="Set", command=self.setDataCallBack)
 
     # the following functions creates the 'basic settings' widgets
-
     def basicSettingsLayout(self):
         # Number of years section
         self.yearsLabel = ttk.Label(
@@ -185,9 +184,11 @@ class GuiWindow:
         )
 
         # .Excel export option
-        ttk.Checkbutton(self.outputTypeGroup, text="Microsoft Excel", variable="").pack(
-            padx=10, pady=5, anchor="w"
-        )
+        self.choiceXLSExport = BooleanVar()
+
+        ttk.Checkbutton(
+            self.outputTypeGroup, text="Microsoft Excel", variable=self.choiceXLSExport
+        ).pack(padx=10, pady=5, anchor="w")
 
         # .SQLITE export option
         ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable="").pack(
@@ -220,6 +221,8 @@ class GuiWindow:
             value="Both",
         ).pack(anchor="w", padx=10, pady=3)
 
+    #########################################################################
+    # Generating the dataset
     # This method passes the user input to start generating the data
     def setDataCallBack(self):
         # This method stores the user settings into a list
@@ -271,7 +274,8 @@ class GuiWindow:
                 ),
             )
 
-    ###############################################################################
+    ###########################################################################
+    # Exporting the dataset
     def exportCallBack(self):
         txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
 
@@ -286,7 +290,8 @@ class GuiWindow:
                 message='Press "Build Data" before exporting the output.',
             )
 
-    ################################################################################
+    ###########################################################################
+    # Exiting the application
     def exitApp(self):
         sys.exit(0)
 
