@@ -277,13 +277,19 @@ class GuiWindow:
     ###########################################################################
     # Exporting the dataset
     def exportCallBack(self):
-        txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
+        # txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
 
         if self.builtData:
 
             # exporting data based on the user choice
             if self.choiceTXTExp:
+                txtOutput = TXTFiles(
+                    self.ccList, self.incList, self.expDict, self.userData
+                )
                 txtOutput.createTXTfiles()
+
+            if self.choiceXLSExport:
+                print("XL Export selected")
         else:
             messagebox.showinfo(
                 title="Export data",
