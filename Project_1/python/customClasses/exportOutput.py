@@ -77,4 +77,6 @@ class TXTFiles:
 
 
 class ExcelExport:
-    pass
+    def __init__(self):
+        self.__path = "./Project_1/python/output/xls_files/"
+        print(self.__path)
