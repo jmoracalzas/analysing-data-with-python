@@ -1,4 +1,7 @@
 #!/usr/bin/env python
+from openpyxl import Workbook
+
+
 class TXTFiles:
     def __init__(self, ccList, incList, expDict, dataList):
         self.__ccList = ccList
@@ -79,4 +82,15 @@ class TXTFiles:
 class ExcelExport:
     def __init__(self):
         self.__path = "./Project_1/python/output/xls_files/"
-        print(self.__path)
+        # self.__file = file
+
+    def excelOutput(self, file):
+        self.__spreadsheet = file
+        self.xlsStructure(self.__spreadsheet)
+
+        # print(file)
+        print("Exporting the dataset")
+
+    def xlsStructure(self, file):
+        print(file)
+

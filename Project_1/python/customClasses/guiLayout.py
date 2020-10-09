@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-from os import truncate
 from tkinter import *
 from tkinter import ttk, messagebox
 import sys
@@ -293,7 +292,8 @@ class GuiWindow:
 
         # Excel export
         if self.choiceXLSExport.get():
-            wb = ExcelExport()
+            wb = ExcelExport()  # instance of the MS Excel object
+            wb.excelOutput(wb)
 
         else:
             messagebox.showinfo(
