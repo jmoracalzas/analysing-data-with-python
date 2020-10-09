@@ -293,7 +293,7 @@ class GuiWindow:
         # Excel export
         if self.choiceXLSExport.get():
             wb = ExcelExport()  # instance of the MS Excel object
-            wb.excelOutput(wb)
+            wb.xlsStructure()
 
         else:
             messagebox.showinfo(

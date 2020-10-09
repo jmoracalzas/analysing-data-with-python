@@ -82,15 +82,18 @@ class TXTFiles:
 class ExcelExport:
     def __init__(self):
         self.__path = "./Project_1/python/output/xls_files/"
-        # self.__file = file
 
-    def excelOutput(self, file):
-        self.__spreadsheet = file
-        self.xlsStructure(self.__spreadsheet)
+    # def excelOutput(self, file):
+    #     self.__spreadsheet = file
+    #     self.xlsStructure(self.__spreadsheet)
 
-        # print(file)
-        print("Exporting the dataset")
+    #     # print(file)
+    #     print("Exporting the dataset")
 
-    def xlsStructure(self, file):
-        print(file)
+    def xlsStructure(self):
+        wb = Workbook()
+        ws = wb.active
+        ws.title = "Hello world"
+
+        wb.save("hello world")
 
