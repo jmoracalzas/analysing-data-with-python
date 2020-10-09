@@ -1,11 +1,10 @@
 #!/usr/bin/env python
-from os import truncate
 from tkinter import *
 from tkinter import ttk, messagebox
 import sys
 
 from dataGenClasses import interimData
-from exportOutput import TXTFiles
+from exportOutput import TXTFiles, ExcelExport
 
 
 class GuiWindow:
@@ -163,9 +162,14 @@ class GuiWindow:
 
         # .txt export option
         self.choiceTXTExp = BooleanVar()
+        # self.choiceTXTExp = False
 
         ttk.Checkbutton(
-            self.outputTypeGroup, text=".txt", variable=self.choiceTXTExp
+            self.outputTypeGroup,
+            text=".txt",
+            variable=self.choiceTXTExp,
+            onvalue=True,
+            offvalue=False,
         ).pack(padx=10, pady=5, anchor="w")
 
         # .CSV export option
@@ -277,13 +281,20 @@ class GuiWindow:
     ###########################################################################
     # Exporting the dataset
     def exportCallBack(self):
-        txtOutput = TXTFiles(self.ccList, self.incList, self.expDict, self.userData)
 
         if self.builtData:
-
-            # exporting data based on the user choice
-            if self.choiceTXTExp:
+            # TXT export
+            if self.choiceTXTExp.get():
+                txtOutput = TXTFiles(
+                    self.ccList, self.incList, self.expDict, self.userData
+                )
                 txtOutput.createTXTfiles()
+
+        # Excel export
+        if self.choiceXLSExport.get():
+            wb = ExcelExport()  # instance of the MS Excel object
+            wb.xlsStructure()
+
         else:
             messagebox.showinfo(
                 title="Export data",

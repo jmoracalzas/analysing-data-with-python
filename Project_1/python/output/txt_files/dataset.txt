@@ -1,51 +1,51 @@
 Generated data
 ------------------------
 Period	Type	Category	Account	Cost Centre	Description	Amount
-8/1/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-80558.39
-8/2/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-93872.29
-8/3/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-83991.88
-8/4/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-13456.6
-8/5/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-2129.2
-8/6/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-69758.57
-8/7/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-16701.28
-8/8/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-48219.91
-8/9/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-75710.39
-8/10/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-64605.34
-8/11/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-51565.17
-8/12/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-69061.25
-8/1/2020	Actual	Expenditure	Electricity	Distribution	Electricity monthly transactions	9532.84
-8/2/2020	Actual	Expenditure	Electricity	Administration	Electricity monthly transactions	14107.06
-8/3/2020	Actual	Expenditure	Purchase of materials	Administration	Purchase of materials monthly transactions	6538.39
-8/4/2020	Actual	Expenditure	Fuel	Distribution	Fuel monthly transactions	28974.61
-8/5/2020	Actual	Expenditure	Fuel	Distribution	Fuel monthly transactions	23850.67
-8/6/2020	Actual	Expenditure	Purchase of materials	Production	Purchase of materials monthly transactions	15681.8
-8/7/2020	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	26627.36
-8/8/2020	Actual	Expenditure	Electricity	Production	Electricity monthly transactions	20853.12
-8/9/2020	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	16787.89
-8/10/2020	Actual	Expenditure	Fuel	Distribution	Fuel monthly transactions	17556.05
-8/11/2020	Actual	Expenditure	Purchase of materials	Production	Purchase of materials monthly transactions	6598.45
-8/12/2020	Actual	Expenditure	Fuel	Production	Fuel monthly transactions	1469.34
-8/1/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/1/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/2/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/2/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/3/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/3/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/4/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/4/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/5/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/5/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/6/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/6/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/7/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/7/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/8/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/8/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/9/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/9/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/10/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/10/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/11/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/11/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
-8/12/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
-8/12/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/1/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-12597.39
+9/2/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-38675.18
+9/3/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-68446.55
+9/4/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-55241.19
+9/5/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-95989.54
+9/6/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-42122.51
+9/7/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-96632.75
+9/8/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-99043.72
+9/9/2020	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-78429.63
+9/10/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-27355.61
+9/11/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-13366.25
+9/12/2020	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-81977.14
+9/1/2020	Actual	Expenditure	Purchase of materials	Production	Purchase of materials monthly transactions	18466.7
+9/2/2020	Actual	Expenditure	Electricity	Distribution	Electricity monthly transactions	24681.54
+9/3/2020	Actual	Expenditure	Purchase of materials	Distribution	Purchase of materials monthly transactions	1913.62
+9/4/2020	Actual	Expenditure	Purchase of materials	Production	Purchase of materials monthly transactions	12802.62
+9/5/2020	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	5077.13
+9/6/2020	Actual	Expenditure	Electricity	Production	Electricity monthly transactions	23856.21
+9/7/2020	Actual	Expenditure	Fuel	Distribution	Fuel monthly transactions	16749.16
+9/8/2020	Actual	Expenditure	Electricity	Distribution	Electricity monthly transactions	6140.66
+9/9/2020	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	13985.86
+9/10/2020	Actual	Expenditure	Fuel	Distribution	Fuel monthly transactions	28084.98
+9/11/2020	Actual	Expenditure	Purchase of materials	Production	Purchase of materials monthly transactions	25858.49
+9/12/2020	Actual	Expenditure	Purchase of materials	Distribution	Purchase of materials monthly transactions	11902.89
+9/1/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/1/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/2/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/2/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/3/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/3/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/4/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/4/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/5/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/5/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/6/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/6/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/7/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/7/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/8/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/8/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/9/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/9/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/10/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/10/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/11/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/11/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+9/12/2020	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+9/12/2020	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
