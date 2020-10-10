@@ -102,3 +102,7 @@ class ExcelExport:
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
 
+        self.settingsExp()
+
+    def settingsExp(self):
+        print("Hello world")
