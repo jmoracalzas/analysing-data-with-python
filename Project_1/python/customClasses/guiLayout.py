@@ -290,10 +290,11 @@ class GuiWindow:
                 )
                 txtOutput.createTXTfiles()
 
-            # Excel export
+            # Excel exportatenea01
+
             if self.choiceXLSExport.get():
                 wb = ExcelExport()  # instance of the MS Excel object
-                wb.xlsStructure(wb)
+                wb.createXLSX(wb)
 
         else:
             messagebox.showinfo(

@@ -83,11 +83,22 @@ class ExcelExport:
     def __init__(self):
         self.__path = "./Project_1/python/output/xls_files/"
 
+    def createXLSX(self, file):
+        self.xlsStructure(file)
+
     def xlsStructure(self, file):
+        # creating the file worksheets
         wb = Workbook()
         ws = wb.active
-        ws.title = "User Data"
-        ws["A1"] = "Hello Wolrd"
+        ws.title = "Dataset"
 
-        wb.save(self.__path + "hello world.xlsx")
+        ws1 = wb.create_sheet("Cost Centres")
+        ws1.title = "Settings"
+
+        # inserting headings
+
+        ws["A1"] = "Hello World"
+
+        # saving the file
+        wb.save(self.__path + "dataset.xlsx")
 
