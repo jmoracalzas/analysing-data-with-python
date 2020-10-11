@@ -87,22 +87,34 @@ class ExcelExport:
         self.xlsStructure(file)
 
     def xlsStructure(self, file):
-        # creating the file worksheets
+        # creating the dataset worksheet
         wb = Workbook()
         ws = wb.active
         ws.title = "Dataset"
+        #########################################################################################
+        ws["A1"] = "Hello World"
 
+        # Creating the settings worksheet
         ws1 = wb.create_sheet("Cost Centres")
         ws1.title = "Settings"
 
-        # inserting headings
+        # accessing the "Settings" worksheet and adding the header
+        wb.active = 1
+        ws1["A1"] = "Cost_Centres"
+        ws1["C1"] = "Income Categories"
+        ws1["E1"] = "Expenditure Types"
+        ws1["F1"] = "Classification"
+        ws1["G1"] = "%_Sales"
+        ws1["H1"] = "%_Distribution"
+        ws1["I1"] = "%_Production"
+        ws1["J1"] = "%_Admin"
+        ws1["K1"] = "Max_Cost"
 
-        ws["A1"] = "Hello World"
-
-        # saving the file
         wb.save(self.__path + "dataset.xlsx")
 
+        ####################################################################################
         self.settingsExp()
 
     def settingsExp(self):
         print("Hello world")
+
