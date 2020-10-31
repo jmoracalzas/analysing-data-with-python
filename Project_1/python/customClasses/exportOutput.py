@@ -80,8 +80,9 @@ class TXTFiles:
 
 
 class ExcelExport:
-    def __init__(self):
+    def __init__(self, ccList):
         self.__path = "./Project_1/python/output/xls_files/"
+        self.__ccList = ccList
 
     def createXLSX(self, file):
         self.xlsStructure(file)
@@ -92,7 +93,7 @@ class ExcelExport:
         ws = wb.active
         ws.title = "Dataset"
         #########################################################################################
-        ws["A1"] = "Hello World"
+        # ws["A1"] = "Hello World"
 
         # Creating the settings worksheet
         ws1 = wb.create_sheet("Cost Centres")
@@ -116,5 +117,8 @@ class ExcelExport:
         self.settingsExp()
 
     def settingsExp(self):
-        print("Hello world")
+        self.listCC(self.__ccList)
+
+    def listCC(self, ccList):
+        print(ccList)
 
