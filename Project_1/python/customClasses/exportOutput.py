@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# from tkinter.constants import ACTIVE
 from openpyxl import Workbook
 
 
@@ -99,6 +100,9 @@ class ExcelExport:
         ws1 = wb.create_sheet("Cost Centres")
         ws1.title = "Settings"
 
+        # def settingsExp(self, ccList):
+        #    print(ccList)
+
         # accessing the "Settings" worksheet and adding the header
         wb.active = 1
         ws1["A1"] = "Cost_Centres"
@@ -111,14 +115,17 @@ class ExcelExport:
         ws1["J1"] = "%_Admin"
         ws1["K1"] = "Max_Cost"
 
+        # exporting the cc
+        myCC = list(self.__ccList)
+
+        for cc in self.__ccList:
+            for element in myCC:
+                x = myCC.pop()
+                print(x)
+
+        # ws1.append(self.__ccList)
+
         wb.save(self.__path + "dataset.xlsx")
 
         ####################################################################################
-        self.settingsExp()
-
-    def settingsExp(self):
-        self.listCC(self.__ccList)
-
-    def listCC(self, ccList):
-        print(ccList)
 
