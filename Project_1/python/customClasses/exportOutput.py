@@ -1,5 +1,9 @@
 #!/usr/bin/env python
+# from tkinter.constants import ACTIVE
 from openpyxl import Workbook
+from openpyxl import load_workbook
+
+# from openpyxl import cell
 
 
 class TXTFiles:
@@ -86,14 +90,13 @@ class ExcelExport:
 
     def createXLSX(self, file):
         self.xlsStructure(file)
+        self.settingsExp()
 
     def xlsStructure(self, file):
         # creating the dataset worksheet
         wb = Workbook()
         ws = wb.active
         ws.title = "Dataset"
-        #########################################################################################
-        # ws["A1"] = "Hello World"
 
         # Creating the settings worksheet
         ws1 = wb.create_sheet("Cost Centres")
@@ -111,14 +114,30 @@ class ExcelExport:
         ws1["J1"] = "%_Admin"
         ws1["K1"] = "Max_Cost"
 
+        # exporting the cc
+
+        # ws1.cell(row=5, column=1, value="Test")
+        # ws1.append(self.__ccList)
+
         wb.save(self.__path + "dataset.xlsx")
 
-        ####################################################################################
-        self.settingsExp()
-
     def settingsExp(self):
-        self.listCC(self.__ccList)
+        self.ccSettings()
 
-    def listCC(self, ccList):
-        print(ccList)
+    def ccSettings(self):
+        # loading the file
+        wb = load_workbook(self.__path + "dataset.xlsx")
+        ws = wb.active
+        ws.active = 1
+
+        # transferring the cost centre settints
+        rowNo = 2
+        colNo = 1
+        noElements = len(self.__ccList)
+
+        for element in range(noElements):
+            ws.cell(row=rowNo + element, column=colNo, value=self.__ccList[element])
+
+        # saving the file
+        wb.save(self.__path + "dataset.xlsx")
 
