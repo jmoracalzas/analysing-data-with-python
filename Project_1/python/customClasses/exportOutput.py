@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # from tkinter.constants import ACTIVE
+from enum import unique
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
@@ -84,9 +85,10 @@ class TXTFiles:
 
 
 class ExcelExport:
-    def __init__(self, ccList):
+    def __init__(self, ccList, incList):
         self.__path = "./Project_1/python/output/xls_files/"
         self.__ccList = ccList
+        self.__incList = incList
 
     def createXLSX(self, file):
         self.xlsStructure(file)
@@ -114,29 +116,32 @@ class ExcelExport:
         ws1["J1"] = "%_Admin"
         ws1["K1"] = "Max_Cost"
 
-        # exporting the cc
-
-        # ws1.cell(row=5, column=1, value="Test")
-        # ws1.append(self.__ccList)
-
         wb.save(self.__path + "dataset.xlsx")
 
     def settingsExp(self):
-        self.ccSettings()
+        # exporting the list of cost centres
+        self.singleColumnSettings(self.__ccList, uniqueColumn=1)
 
-    def ccSettings(self):
+        # exporting the list of income categories
+        self.singleColumnSettings(self.__incList, uniqueColumn=3)
+
+    def singleColumnSettings(self, settingsList, uniqueColumn):
         # loading the file
         wb = load_workbook(self.__path + "dataset.xlsx")
         ws = wb.active
         ws.active = 1
 
-        # transferring the cost centre settints
-        rowNo = 2
-        colNo = 1
-        noElements = len(self.__ccList)
+        # transferring the cost centre settings
+        colNo = uniqueColumn
+        rowLimit = len(settingsList) + 1
+        ccList = list(settingsList)
 
-        for element in range(noElements):
-            ws.cell(row=rowNo + element, column=colNo, value=self.__ccList[element])
+        for row in ws.iter_rows(
+            min_row=2, min_col=colNo, max_col=colNo, max_row=rowLimit
+        ):
+            for cell in row:
+                settingsItem = ccList.pop()
+                cell.value = settingsItem
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
