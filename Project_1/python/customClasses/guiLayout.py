@@ -291,8 +291,8 @@ class GuiWindow:
                 txtOutput.createTXTfiles()
 
             # Excel export
-            if self.choiceXLSExport.get():
-                wb = ExcelExport(self.ccList)  # instance of the MS Excel object
+            if self.choiceXLSExport.get():  # instance of the MS Excel object
+                wb = ExcelExport(self.ccList, self.incList)
                 excelFile = wb.createXLSX(wb)
 
         else:
