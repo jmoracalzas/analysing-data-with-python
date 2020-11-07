@@ -14,4 +14,3 @@ This project will focus on generating random data given a set of lists that prov
 
 - ** Project 1B: Data generation using web technologies**
 This is the implementetion of the same project but using HTML, CSS and JavaScript.
-https://github.com/jmoracalzas/my-portfolio/blob/master/Project_1/HTML/)
