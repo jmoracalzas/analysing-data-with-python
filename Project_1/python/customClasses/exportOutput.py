@@ -139,7 +139,18 @@ class ExcelExport:
         self.userDataExp()
 
     def userDataExp(self):
+        # loading the file
+        wb = load_workbook(self.__path + "dataset.xlsx")
+        ws = wb["Dataset"]
+
         print(self.__userData)
+
+        for col in ws.iter_cols(min_row=2, max_col=7, min_col=1, max_row=47):
+            for cell in col:
+                cell.value = "Test"
+
+        # saving the file
+        wb.save(self.__path + "dataset.xlsx")
 
     def singleColumnSettings(self, settingsList, uniqueColumn):
         # loading the file
