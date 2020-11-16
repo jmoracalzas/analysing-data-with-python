@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # from tkinter.constants import ACTIVE
-from enum import unique
+# from enum import unique
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
@@ -143,11 +143,22 @@ class ExcelExport:
         wb = load_workbook(self.__path + "dataset.xlsx")
         ws = wb["Dataset"]
 
-        print(self.__userData)
+        # obtaining the user data to transfer to the spreadsheet
+        stackUserData = self.__userData[:]
 
-        for col in ws.iter_cols(min_row=2, max_col=7, min_col=1, max_row=47):
-            for cell in col:
-                cell.value = "Test"
+        # transferring the data
+        for row in ws.iter_rows(min_row=2, max_col=7, min_col=1, max_row=47):
+            # extracting the last element of the stack
+            dataLine = stackUserData.pop()
+
+            # separating the elements and revering the their order
+            elements = dataLine.split("\t")
+            elements.reverse()
+
+            # inserting the values into the cell
+            for cell in row:
+                cell.value = elements.pop()
+                print(elements)
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
