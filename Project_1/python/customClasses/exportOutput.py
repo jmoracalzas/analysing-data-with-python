@@ -148,7 +148,7 @@ class ExcelExport:
 
         # transferring the data
         for row in ws.iter_rows(
-            min_row=2, max_col=7, min_col=1, max_row=len(stackUserData)
+            min_row=2, max_col=7, min_col=1, max_row=len(stackUserData) + 1
         ):
             # extracting the last element of the stack
             dataLine = stackUserData.pop()
