@@ -225,7 +225,6 @@ class GuiWindow:
             value="Both",
         ).pack(anchor="w", padx=10, pady=3)
 
-    #########################################################################
     # Generating the dataset
     # This method passes the user input to start generating the data
     def setDataCallBack(self):
@@ -292,7 +291,7 @@ class GuiWindow:
 
             # Excel export
             if self.choiceXLSExport.get():  # instance of the MS Excel object
-                wb = ExcelExport(self.ccList, self.incList, self.userData)
+                wb = ExcelExport(self.ccList, self.incList, self.userData, self.expDict)
                 excelFile = wb.createXLSX(wb)
 
         else:
