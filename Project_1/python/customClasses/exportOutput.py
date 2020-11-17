@@ -2,6 +2,8 @@
 from openpyxl import Workbook
 from openpyxl import load_workbook
 
+# from openpyxl.xml.constants import MIN_ROW
+
 
 class TXTFiles:
     def __init__(self, ccList, incList, expDict, dataList):
@@ -81,12 +83,12 @@ class TXTFiles:
 
 
 class ExcelExport:
-    def __init__(self, ccList, incList, userData, expList):
+    def __init__(self, ccList, incList, userData, expDict):
         self.__path = "./Project_1/python/output/xls_files/"
         self.__ccList = ccList
         self.__incList = incList
         self.__userData = userData
-        self.__expList = expList
+        self.__expList = expDict
 
     def createXLSX(self, file):
         # creating the file structure
@@ -169,7 +171,21 @@ class ExcelExport:
         wb.save(self.__path + "dataset.xlsx")
 
     def exportExpCategories(self):
+        # loading the file
+        wb = load_workbook(self.__path + "dataset.xlsx")
+        ws = wb["Settings"]
+
+        for row in ws.iter_rows(min_row=2, max_col=11, max_row=10, min_col=5):
+            for key in self.__expList.keys():
+                for cell in row:
+
+                    cell.value = self.__expList.key
+                    # cell.value = key
+
         print(self.__expList)
+
+        # saving the file
+        wb.save(self.__path + "dataset.xlsx")
 
     def singleColumnSettings(self, settingsList, uniqueColumn):
         # loading the file
