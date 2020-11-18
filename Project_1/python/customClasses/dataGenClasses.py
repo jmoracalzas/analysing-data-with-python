@@ -11,7 +11,7 @@ class Rules:
         "Purchase of materials": ["variable", 0, 0, 100, 0, 0],
         "Rent": ["fixed", 10, 10, 30, 50, 4750],
         "Electricity": ["variable", 15, 10, 50, 25, 0],
-        "Salaries": ["fixed", 15, 10, 5000, 2500, 6575],
+        "Salaries": ["fixed", 15, 10, 50, 25, 6575],
         "Fuel": ["variable", 0, 55, 40, 5, 0],
     }
 

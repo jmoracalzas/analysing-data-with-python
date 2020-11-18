@@ -177,30 +177,34 @@ class ExcelExport:
 
         # creating the the list to export the data
         categoriesStack = self.__expList
+
         # to prepare the data entries before exporting them on to Microsoft Excel
         rowData = []  # this list holds the data to be exported
+        noColumns = len(self.__expList)
 
         # preparing the data for each line
         # extracting the data from the stack/lidy and sorting it correctly before exporting it
-        line = list(categoriesStack.popitem())
-        line.reverse()
-        rowData.append(line.pop())
+        for line in range(noColumns):
+            line = list(categoriesStack.popitem())
+            line.reverse()
+            rowData.append(line.pop())
 
-        for row in line:
-            for element in row:
-                # print(element)
-                rowData.append(element)
+            for row in line:
+                for element in row:
+                    rowData.append(element)
+
+            del line
 
         rowData.reverse()
-        # print(rowData)
 
-        for row in ws.iter_rows(min_row=2, max_col=11, max_row=2, min_col=5):
+        for row in ws.iter_rows(
+            min_row=2, max_col=11, max_row=noColumns + 1, min_col=5
+        ):
             # inserting the values into each cell
             for cell in row:
-                # print(rowData.pop())
                 cell.value = rowData.pop()
 
-        # print(line)
+        del rowData
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
