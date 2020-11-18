@@ -175,14 +175,24 @@ class ExcelExport:
         wb = load_workbook(self.__path + "dataset.xlsx")
         ws = wb["Settings"]
 
+        # creating the the list to export the data
+        categoriesStack = self.__expList
+        # to prepare the data entries before exporting them on to Microsoft Excel
+        rowData = []  # this list holds the data to be exported
+
+        # preparing the data for each line
+        # extracting the data from the stack/lidy and sorting it correctly before exporting it
+        line = list(categoriesStack.popitem())
+        line.reverse()
+        rowData.append(line.pop())
+
         for row in ws.iter_rows(min_row=2, max_col=11, max_row=10, min_col=5):
-            for key in self.__expList.keys():
-                for cell in row:
+            # inserting the values into each cell
+            for cell in row:
+                cell.value = "test"
 
-                    cell.value = self.__expList.key
-                    # cell.value = key
-
-        print(self.__expList)
+        print(line)
+        print(rowData)
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
