@@ -186,13 +186,21 @@ class ExcelExport:
         line.reverse()
         rowData.append(line.pop())
 
-        for row in ws.iter_rows(min_row=2, max_col=11, max_row=10, min_col=5):
+        for row in line:
+            for element in row:
+                # print(element)
+                rowData.append(element)
+
+        rowData.reverse()
+        # print(rowData)
+
+        for row in ws.iter_rows(min_row=2, max_col=11, max_row=2, min_col=5):
             # inserting the values into each cell
             for cell in row:
-                cell.value = "test"
+                # print(rowData.pop())
+                cell.value = rowData.pop()
 
-        print(line)
-        print(rowData)
+        # print(line)
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
