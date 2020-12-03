@@ -103,9 +103,6 @@ class ExcelExport:
         # exporting the expenditure categories
         self.exportExpCategories()
 
-        # setting the column width
-        # self.columnWidth()
-
     def xlsStructure(self, file):
         # creating the dataset worksheet
         wb = Workbook()
@@ -236,21 +233,9 @@ class ExcelExport:
                 if self.__maxLength < cellLength:
                     self.__maxLength = cellLength
 
+        # auto-fit columns
         ws.column_dimensions[get_column_letter(colNo)].width = self.__maxLength
-        print(self.__maxLength)
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
 
-    # def columnWidth(self):
-    #     # loading the file
-    #     wb = load_workbook(self.__path + "dataset.xlsx")
-    #     ws = wb["Dataset"]
-
-    #     self.adjustColWidth()
-
-    #     # saving the file
-    #     wb.save(self.__path + "dataset.xlsx")
-
-    # def adjustColWidth(self):
-    #    print("looping")
