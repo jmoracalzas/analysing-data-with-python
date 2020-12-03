@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 from openpyxl import Workbook
 from openpyxl import load_workbook
-
-# from openpyxl.xml.constants import MIN_ROW
+from openpyxl.utils import get_column_letter
 
 
 class TXTFiles:
@@ -89,6 +88,7 @@ class ExcelExport:
         self.__incList = incList
         self.__userData = userData
         self.__expList = expDict
+        self.__maxLength = 0
 
     def createXLSX(self, file):
         # creating the file structure
@@ -102,6 +102,9 @@ class ExcelExport:
 
         # exporting the expenditure categories
         self.exportExpCategories()
+
+        # setting the column width
+        # self.columnWidth()
 
     def xlsStructure(self, file):
         # creating the dataset worksheet
@@ -227,6 +230,27 @@ class ExcelExport:
                 settingsItem = ccList.pop()
                 cell.value = settingsItem
 
+                # detecting the maximum length value of the cells
+                cellLength = len(settingsItem)
+
+                if self.__maxLength < cellLength:
+                    self.__maxLength = cellLength
+
+        ws.column_dimensions[get_column_letter(colNo)].width = self.__maxLength
+        print(self.__maxLength)
+
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
 
+    # def columnWidth(self):
+    #     # loading the file
+    #     wb = load_workbook(self.__path + "dataset.xlsx")
+    #     ws = wb["Dataset"]
+
+    #     self.adjustColWidth()
+
+    #     # saving the file
+    #     wb.save(self.__path + "dataset.xlsx")
+
+    # def adjustColWidth(self):
+    #    print("looping")
