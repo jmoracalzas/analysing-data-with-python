@@ -175,15 +175,18 @@ class ExcelExport:
         wb = load_workbook(self.__path + "dataset.xlsx")
         ws = wb["Settings"]
 
+        # resetting the length of each cell to 0
+        self.__maxLength = 0
+
         # creating the the list to export the data
         categoriesStack = self.__expList
 
         # to prepare the data entries before exporting them on to Microsoft Excel
-        rowData = []  # this list holds the data to be exported
+        rowData = []  # this list holds the data to be exported - destination
         noColumns = len(self.__expList)
 
         # preparing the data for each line
-        # extracting the data from the stack/lidy and sorting it correctly before exporting it
+        # extracting the data from the stack/list and sorting it correctly before exporting it
         for line in range(noColumns):
             line = list(categoriesStack.popitem())
             line.reverse()
@@ -205,6 +208,8 @@ class ExcelExport:
                 cell.value = rowData.pop()
 
         del rowData
+
+        # auto_fit columns
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
