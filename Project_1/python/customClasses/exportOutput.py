@@ -208,7 +208,7 @@ class ExcelExport:
 
         # auto_fit columns
         for columns in ws.iter_cols(
-            min_row=2, max_col=11, max_row=noColumns + 1, min_col=5
+            min_row=1, max_col=11, max_row=noColumns + 1, min_col=5
         ):
             # resetting the length of each cell to 0
             self.__maxLength = 0
@@ -217,15 +217,14 @@ class ExcelExport:
                 cellLength = len(str(cell.value))
 
                 if self.__maxLength < cellLength:
-                    self.__maxLength = cellLength
+                    self.__maxLength = cellLength + 2
 
                 print(cell.value, cellLength, self.__maxLength, cell.col_idx)
                 self.__columnIndex = cell.col_idx
 
-            print("column index: ", self.__columnIndex)
-            print("column length: ", self.__maxLength)
-
-        # ws.column_dimensions[get_column_letter(columns)].width = self.__maxLength
+            ws.column_dimensions[
+                get_column_letter(self.__columnIndex)
+            ].width = self.__maxLength
 
         del rowData
 
