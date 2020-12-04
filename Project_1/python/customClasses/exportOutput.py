@@ -183,7 +183,7 @@ class ExcelExport:
 
         # to prepare the data entries before exporting them on to Microsoft Excel
         rowData = []  # this list holds the data to be exported - destination
-        noColumns = len(self.__expList)
+        noColumns = len(self.__expList)  # to determine the no of rows to loop through
 
         # preparing the data for each line
         # extracting the data from the stack/list and sorting it correctly before exporting it
@@ -207,9 +207,22 @@ class ExcelExport:
             for cell in row:
                 cell.value = rowData.pop()
 
-        del rowData
-
         # auto_fit columns
+        for columns in ws.iter_cols(
+            min_row=2, max_col=11, max_row=noColumns + 1, min_col=5
+        ):
+
+            for cell in columns:
+                cellLength = len(str(cell.value))
+
+                if self.__maxLength < cellLength:
+                    self.__maxLength = cellLength
+
+                print(cell.value, cellLength, self.__maxLength, cell.col_idx)
+
+        # ws.column_dimensions[get_column_letter(columns)].width = self.__maxLength
+
+        del rowData
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
@@ -224,6 +237,7 @@ class ExcelExport:
         colNo = uniqueColumn
         rowLimit = len(settingsList) + 1
         ccList = list(settingsList)
+        self.__maxLength = 0
 
         for row in ws.iter_rows(
             min_row=2, min_col=colNo, max_col=colNo, max_row=rowLimit
