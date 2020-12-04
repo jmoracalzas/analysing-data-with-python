@@ -175,8 +175,7 @@ class ExcelExport:
         wb = load_workbook(self.__path + "dataset.xlsx")
         ws = wb["Settings"]
 
-        # resetting the length of each cell to 0
-        self.__maxLength = 0
+        self.__columnIndex = 0
 
         # creating the the list to export the data
         categoriesStack = self.__expList
@@ -211,6 +210,8 @@ class ExcelExport:
         for columns in ws.iter_cols(
             min_row=2, max_col=11, max_row=noColumns + 1, min_col=5
         ):
+            # resetting the length of each cell to 0
+            self.__maxLength = 0
 
             for cell in columns:
                 cellLength = len(str(cell.value))
@@ -219,6 +220,10 @@ class ExcelExport:
                     self.__maxLength = cellLength
 
                 print(cell.value, cellLength, self.__maxLength, cell.col_idx)
+                self.__columnIndex = cell.col_idx
+
+            print("column index: ", self.__columnIndex)
+            print("column length: ", self.__maxLength)
 
         # ws.column_dimensions[get_column_letter(columns)].width = self.__maxLength
 
