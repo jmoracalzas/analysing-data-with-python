@@ -136,6 +136,25 @@ class ExcelExport:
 
         wb.save(self.__path + "dataset.xlsx")
 
+    def autofitColumns(self, sheet, minRow, maxCol, maxRow, minCol):
+        for columns in sheet.iter_cols(
+            min_row=minRow, max_col=maxCol, max_row=maxCol + 1, min_col=minCol
+        ):
+            # resetting the length of each cell to 0
+            self.__maxLength = 0
+
+            for cell in columns:
+                cellLength = len(str(cell.value))
+
+                if self.__maxLength < cellLength:
+                    self.__maxLength = cellLength + 5
+
+                self.__columnIndex = cell.col_idx
+
+            sheet.column_dimensions[
+                get_column_letter(self.__columnIndex)
+            ].width = self.__maxLength
+
     def settingsExp(self):
         # exporting the list of cost centres
         self.singleColumnSettings(self.__ccList, uniqueColumn=1)
@@ -166,6 +185,9 @@ class ExcelExport:
             # inserting the values into the cell
             for cell in row:
                 cell.value = elements.pop()
+
+        # auto_fit columns
+        self.autofitColumns(sheet=ws, minRow=1, maxCol=7, maxRow=row_limit, minCol=1)
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
@@ -207,24 +229,9 @@ class ExcelExport:
                 cell.value = rowData.pop()
 
         # auto_fit columns
-        for columns in ws.iter_cols(
-            min_row=1, max_col=11, max_row=noColumns + 1, min_col=5
-        ):
-            # resetting the length of each cell to 0
-            self.__maxLength = 0
-
-            for cell in columns:
-                cellLength = len(str(cell.value))
-
-                if self.__maxLength < cellLength:
-                    self.__maxLength = cellLength + 2
-
-                print(cell.value, cellLength, self.__maxLength, cell.col_idx)
-                self.__columnIndex = cell.col_idx
-
-            ws.column_dimensions[
-                get_column_letter(self.__columnIndex)
-            ].width = self.__maxLength
+        self.autofitColumns(
+            sheet=ws, minRow=1, maxCol=11, maxRow=noColumns + 1, minCol=5
+        )
 
         del rowData
 
