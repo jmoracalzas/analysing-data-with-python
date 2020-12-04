@@ -136,6 +136,25 @@ class ExcelExport:
 
         wb.save(self.__path + "dataset.xlsx")
 
+    def autofitColumns(self, sheet, minRow, maxCol, maxRow, minCol):
+        for columns in sheet.iter_cols(
+            min_row=minRow, max_col=maxCol, max_row=maxCol + 1, min_col=minCol
+        ):
+            # resetting the length of each cell to 0
+            self.__maxLength = 0
+
+            for cell in columns:
+                cellLength = len(str(cell.value))
+
+                if self.__maxLength < cellLength:
+                    self.__maxLength = cellLength + 5
+
+                self.__columnIndex = cell.col_idx
+
+            sheet.column_dimensions[
+                get_column_letter(self.__columnIndex)
+            ].width = self.__maxLength
+
     def settingsExp(self):
         # exporting the list of cost centres
         self.singleColumnSettings(self.__ccList, uniqueColumn=1)
@@ -167,6 +186,9 @@ class ExcelExport:
             for cell in row:
                 cell.value = elements.pop()
 
+        # auto_fit columns
+        self.autofitColumns(sheet=ws, minRow=1, maxCol=7, maxRow=row_limit, minCol=1)
+
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
 
@@ -175,15 +197,14 @@ class ExcelExport:
         wb = load_workbook(self.__path + "dataset.xlsx")
         ws = wb["Settings"]
 
-        # resetting the length of each cell to 0
-        self.__maxLength = 0
+        self.__columnIndex = 0
 
         # creating the the list to export the data
         categoriesStack = self.__expList
 
         # to prepare the data entries before exporting them on to Microsoft Excel
         rowData = []  # this list holds the data to be exported - destination
-        noColumns = len(self.__expList)
+        noColumns = len(self.__expList)  # to determine the no of rows to loop through
 
         # preparing the data for each line
         # extracting the data from the stack/list and sorting it correctly before exporting it
@@ -207,9 +228,12 @@ class ExcelExport:
             for cell in row:
                 cell.value = rowData.pop()
 
-        del rowData
-
         # auto_fit columns
+        self.autofitColumns(
+            sheet=ws, minRow=1, maxCol=11, maxRow=noColumns + 1, minCol=5
+        )
+
+        del rowData
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
@@ -224,6 +248,7 @@ class ExcelExport:
         colNo = uniqueColumn
         rowLimit = len(settingsList) + 1
         ccList = list(settingsList)
+        self.__maxLength = 0
 
         for row in ws.iter_rows(
             min_row=2, min_col=colNo, max_col=colNo, max_row=rowLimit
