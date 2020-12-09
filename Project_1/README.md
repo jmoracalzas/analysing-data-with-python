@@ -5,7 +5,7 @@ This projects was designed to facilitate learning activities. It focuses on util
 
 ## Stages <br />
 1. *Generation of data*<br />
-This part of the project focuses on generating some sample data that will be manipulated at a later stage. This data will be stored in CSV files.
+This part of the project focuses on generating some sample data that will be manipulated at a later stage. This data will be stored in different file formats.
 
 2. *Creation of a basic GUI* <br />
 This section of the project will be used to explore the Tkinter module to create a basic GUI.
@@ -15,7 +15,7 @@ This final block of the project will be an introduction to manipulating data in 
 
 ## Tools and programming languages <br />
 1. Python 3
-2. Python modules: Python Standard Library, Tkinter, Openpyxl
+2. Python libraries: Python Standard Library (random), Tkinter, Openpyxl
 3. Microsoft Excel and text files
 
 ## Status
@@ -28,7 +28,7 @@ This final block of the project will be an introduction to manipulating data in 
 |Customisation of user settings |Pending               |Pending           |
 |Code optimisation              |In progress           |Not applicable    |
 
-Output creation will consist of: .txt export (complete), .csv export (pending),  .xml (pending), .json (pending), Microsoft Excel export (pending) and SQLite (pending).
+Output creation will consist of: .txt export (complete), .csv export (pending),  .xml (pending), .json (pending), Microsoft Excel export (complete) and SQLite (pending).
 
 ## Documentation <br />
 ### Requirements
@@ -68,7 +68,7 @@ The system must
 | + intData --> list()                  | - generateFixedExp()                    |
 |                                       | - appendData()                          | 
 
-TThe interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br />
+The interimDataset will feed from the following information: 1) cost centre and 2) **transaction type** (category, subcategory)<br />
 <br />
 
 |**Outcome**                   |                    |
