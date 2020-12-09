@@ -28,7 +28,7 @@ This final block of the project will be an introduction to manipulating data in 
 |Customisation of user settings |Pending               |Pending           |
 |Code optimisation              |In progress           |Not applicable    |
 
-Output creation will consist of: .txt export (complete), .csv export (pending),  .xml (pending), .json (pending), Microsoft Excel export (pending) and SQLite (pending).
+Output creation will consist of: .txt export (complete), .csv export (pending),  .xml (pending), .json (pending), Microsoft Excel export (complete) and SQLite (pending).
 
 ## Documentation <br />
 ### Requirements
