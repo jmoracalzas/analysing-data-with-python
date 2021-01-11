@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "/usr/bin/python",
+    "python.pythonPath": "/home/jordi/venvs/Project_1/bin/python",
     "python.analysis.extraPaths": [
         "./Project_1/python/customClasses"
     ]
