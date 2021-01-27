@@ -195,7 +195,9 @@ class GuiWindow:
         ).pack(padx=10, pady=5, anchor="w")
 
         # .SQLITE export option
-        ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable="").pack(
+        
+        self.choiceSQLExport = BooleanVar()
+        ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable=self.choiceSQLExport).pack(
             padx=10, pady=5, anchor="w"
         )
 
@@ -294,6 +296,9 @@ class GuiWindow:
                 wb = ExcelExport(self.ccList, self.incList, self.userData, self.expDict)
                 excelFile = wb.createXLSX(wb)
 
+            # SQLite3 export
+            if self.choiceSQLExport.get():
+                print("Hello SQLite3 export!")
         else:
             messagebox.showinfo(
                 title="Export data",
