@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from openpyxl import Workbook
 from openpyxl import load_workbook
+from openpyxl.descriptors.base import Integer
 from openpyxl.utils import get_column_letter
 import sqlite3
 
@@ -272,6 +273,17 @@ class ExcelExport:
 
 class SQLExport:
    def __init__(self):
-       # conn = sqlite3.connect("dataSource.db")
-        print("Hello World")
+        self.__path = "./Project_1/python/output/sql_export/"
+        conn = sqlite3.connect(self.__path + "dataSource.db")
+        c = conn.cursor()
 
+        #create table 
+        c.execute('''CREATE TABLE IF NOT EXISTS userData(
+            id integer primary key autoincrement
+        )''')
+        conn.commit
+
+        print("Hello World")
+        
+        conn.close()
+        print("Connection closed")

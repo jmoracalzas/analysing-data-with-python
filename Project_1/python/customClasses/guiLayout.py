@@ -4,7 +4,7 @@ from tkinter import ttk, messagebox
 import sys
 
 from dataGenClasses import interimData
-from exportOutput import TXTFiles, ExcelExport
+from exportOutput import SQLExport, TXTFiles, ExcelExport
 
 
 class GuiWindow:
@@ -298,7 +298,8 @@ class GuiWindow:
 
             # SQLite3 export
             if self.choiceSQLExport.get():
-                print("Hello SQLite3 export!")
+                test = SQLExport()
+                print(test)
         else:
             messagebox.showinfo(
                 title="Export data",
