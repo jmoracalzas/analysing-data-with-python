@@ -50,11 +50,17 @@ class Rules:
         calendar = tuple(
             [
                 [
-                    str(self.startDate.day)
-                    + "/"
+                    str((self.startDate - timedelta(days=365 * j)).year)
+                    + "-"
                     + str(i + 1)
-                    + "/"
-                    + str((self.startDate - timedelta(days=365 * j)).year)
+                    + "-"
+                    + str(self.startDate.day)
+
+                    #str(self.startDate.day)
+                    #+ "/"
+                    #+ str(i + 1)
+                    #+ "/"
+                    #+ str((self.startDate - timedelta(days=365 * j)).year)
                     for i in range(12)
                 ]
                 for j in range(self.__setNoYears)

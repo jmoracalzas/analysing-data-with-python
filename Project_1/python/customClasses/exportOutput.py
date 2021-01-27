@@ -272,18 +272,42 @@ class ExcelExport:
         wb.save(self.__path + "dataset.xlsx")
 
 class SQLExport:
-   def __init__(self):
+    def __init__(self):
         self.__path = "./Project_1/python/output/sql_export/"
-        conn = sqlite3.connect(self.__path + "dataSource.db")
-        c = conn.cursor()
+        self.conn = sqlite3.connect(self.__path + "dataSource.db")
+        self.c = self.conn.cursor()
+        self.addTables()
 
-        #create table 
-        c.execute('''CREATE TABLE IF NOT EXISTS userData(
-            id integer primary key autoincrement
-        )''')
-        conn.commit
+    def addTables(self):
+        #creating the following tables:
+    # 1.userData 
+        self.c.execute('''CREATE TABLE IF NOT EXISTS userData(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            date TEXT,
+            transaction_type TEXT,
+            nature TEXT,
+            account TEXT ,
+            cost_centre TEXT,
+            description TEXT,
+            amount REAL
+        );''')
+
+    # 2. costCentre
+        self.c.execute('''CREATE TABLE IF NOT EXISTS costCentre(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            description TEXT
+        );''')
+
+    # 3. Populating the default tables with values
+
+        self.c.executemany('INSERT INTO costCentre (description) VALUES (?)',())
+
+
+
+
+        self.conn.commit()
 
         print("Hello World")
         
-        conn.close()
+        self.conn.close()
         print("Connection closed")
