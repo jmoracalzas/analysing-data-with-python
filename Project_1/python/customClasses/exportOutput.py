@@ -2,6 +2,7 @@
 from openpyxl import Workbook
 from openpyxl import load_workbook
 from openpyxl.utils import get_column_letter
+import sqlite3
 
 
 class TXTFiles:
@@ -268,4 +269,9 @@ class ExcelExport:
 
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
+
+class SQLExport:
+   def __init__(self):
+       # conn = sqlite3.connect("dataSource.db")
+        print("Hello World")
 

@@ -1,0 +1,51 @@
+Generated data
+------------------------
+Period	Type	Category	Account	Cost Centre	Description	Amount
+27/1/2021	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-59793.63
+27/2/2021	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-19379.8
+27/3/2021	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-23251.9
+27/4/2021	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-43670.8
+27/5/2021	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-57179.35
+27/6/2021	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-80921.91
+27/7/2021	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-57113.55
+27/8/2021	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-5116.68
+27/9/2021	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-69294.15
+27/10/2021	Actual	Income	Sale of products	Sales	Sale of products monthly transactions	-11693.19
+27/11/2021	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-55275.47
+27/12/2021	Actual	Income	Rendering of services	Sales	Rendering of services monthly transactions	-58456.18
+27/1/2021	Actual	Expenditure	Electricity	Production	Electricity monthly transactions	5274.02
+27/2/2021	Actual	Expenditure	Purchase of materials	Production	Purchase of materials monthly transactions	4655.52
+27/3/2021	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	19449.68
+27/4/2021	Actual	Expenditure	Electricity	Distribution	Electricity monthly transactions	18736.4
+27/5/2021	Actual	Expenditure	Fuel	Production	Fuel monthly transactions	11828.53
+27/6/2021	Actual	Expenditure	Fuel	Production	Fuel monthly transactions	3501.95
+27/7/2021	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	22203.97
+27/8/2021	Actual	Expenditure	Fuel	Distribution	Fuel monthly transactions	2226.42
+27/9/2021	Actual	Expenditure	Electricity	Administration	Electricity monthly transactions	21029.74
+27/10/2021	Actual	Expenditure	Purchase of materials	Distribution	Purchase of materials monthly transactions	10038.58
+27/11/2021	Actual	Expenditure	Fuel	Administration	Fuel monthly transactions	18252.14
+27/12/2021	Actual	Expenditure	Electricity	Distribution	Electricity monthly transactions	15659.43
+27/1/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/1/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/2/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/2/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/3/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/3/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/4/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/4/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/5/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/5/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/6/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/6/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/7/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/7/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/8/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/8/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/9/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/9/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/10/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/10/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/11/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/11/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
+27/12/2021	Actual	Expenditure	Rent	Administration	Rent monthly transactions	4750
+27/12/2021	Actual	Expenditure	Salaries	Administration	Salaries monthly transactions	6575
