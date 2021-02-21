@@ -12,7 +12,6 @@ class GuiWindow:
     # choiceCSVExp = ""
     # choiceXMLExp =    ""
     # choiceJSONExp = ""
-    # choiceSQLiteExp = ""
 
     # to store the generated interim data before creating the files
     userData = []
@@ -194,8 +193,7 @@ class GuiWindow:
             self.outputTypeGroup, text="Microsoft Excel", variable=self.choiceXLSExport
         ).pack(padx=10, pady=5, anchor="w")
 
-        # .SQLITE export option
-        
+        # .SQLITE export option        
         self.choiceSQLExport = BooleanVar()
         ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable=self.choiceSQLExport).pack(
             padx=10, pady=5, anchor="w"
@@ -298,8 +296,7 @@ class GuiWindow:
 
             # SQLite3 export
             if self.choiceSQLExport.get():
-                test = SQLExport()
-                print(test)
+                test = SQLExport(self.ccList)
         else:
             messagebox.showinfo(
                 title="Export data",
