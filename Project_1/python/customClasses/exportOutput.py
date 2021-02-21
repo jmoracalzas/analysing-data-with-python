@@ -305,18 +305,24 @@ class SQLExport:
         
 
     def addDefValues(self):
-    # # 3. Populating the default tables with values
-    #     #1. costCentre table
+    # 3. Populating the default tables with values
+    # 3.1. costCentre table
         #self.c.executemany('INSERT INTO costCentre (description) VALUES (?)',self.ccList)
         print(type(self.ccList))
+        print(self.ccList)
+
         listOfValues=list(self.ccList)
-        for value in listOfValues:
-            item = listOfValues.pop()
-            self.c.execute('INSERT INTO costCentre (description) VALUES (?)',item)
+
+        for value in range(len(self.ccList)):
+            #item = listOfValues.pop()
+            #print(type(item))
+            sql = 'INSERT INTO costCentre (description) VALUES (?)'
+            val = listOfValues.pop()
+            self.c.execute(sql,val)
 
         self.conn.commit()
 
-        print("Hello World")
+        #print(listOfValues.pop())
         
         self.conn.close()
         print("Connection closed")
