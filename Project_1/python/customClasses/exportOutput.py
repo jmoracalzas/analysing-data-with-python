@@ -309,7 +309,10 @@ class SQLExport:
     #     #1. costCentre table
         #self.c.executemany('INSERT INTO costCentre (description) VALUES (?)',self.ccList)
         print(type(self.ccList))
-        print(self.ccList)
+        listOfValues=list(self.ccList)
+        for value in listOfValues:
+            item = listOfValues.pop()
+            self.c.execute('INSERT INTO costCentre (description) VALUES (?)',item)
 
         self.conn.commit()
 
