@@ -272,57 +272,66 @@ class ExcelExport:
         wb.save(self.__path + "dataset.xlsx")
 
 class SQLExport:
-    def __init__(self, ccList):
+    def __init__(self):
         self.__path = "./Project_1/python/output/sql_export/"
-        self.ccList = ccList
-
+        
         self.conn = sqlite3.connect(self.__path + "dataSource.db")
         self.c = self.conn.cursor()
-        
-        self.addTables()
-        self.addDefValues()
 
-    def addTables(self):
-    #creating the following tables:
-        # 1.userData 
+        #creating the tables
+        self.createTables()
+
+        #inserting the default values into the tables
+        self.oneColumnSettings()
+        
+        self.conn.commit()
+        self.conn.close()
+
+    def createTables(self):
+        #create Cost Centres table
+        self.c.execute('''CREATE TABLE IF NOT EXISTS costCente(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            description TEXT
+            );
+        ''')
+
+         #create Income Categories table
+        self.c.execute('''CREATE TABLE IF NOT EXISTS incomeCategories(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            description TEXT
+            );
+        ''')
+
+        #create Expenditure Categories table
+        self.c.execute('''CREATE TABLE IF NOT EXISTS expenditureCategories(
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            type TEXT,
+            classification TEXT,
+            percSales REAL,
+            perProduction REAL,
+            perAdmin REAL,
+            max_Cost REAL
+        );''')
+
+        #create User Data table
         self.c.execute('''CREATE TABLE IF NOT EXISTS userData(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT,
-            transaction_type TEXT,
+            type TEXT,
             nature TEXT,
-            account TEXT ,
-            cost_centre TEXT,
+            account TEXT,
+            costCentre TEXT,
             description TEXT,
             amount REAL
         );''')
 
-        # 2. costCentre
-        self.c.execute('''CREATE TABLE IF NOT EXISTS costCentre(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            description TEXT
-        );''')
+    def oneColumnSettings(self):
+        #Creating the connection and the cursor
+        #self.conn
+        #self.c
 
+        #commiting and closing the database
+        #self.conn.commit()
+        #self.conn.close()
+        pass
         
-
-    def addDefValues(self):
-    # 3. Populating the default tables with values
-    # 3.1. costCentre table
-        #self.c.executemany('INSERT INTO costCentre (description) VALUES (?)',self.ccList)
-        print(type(self.ccList))
-        print(self.ccList)
-
-        listOfValues=list(self.ccList)
-
-        for value in range(len(self.ccList)):
-            #item = listOfValues.pop()
-            #print(type(item))
-            sql = 'INSERT INTO costCentre (description) VALUES (?)'
-            val = listOfValues.pop()
-            self.c.execute(sql,val)
-
-        self.conn.commit()
-
-        #print(listOfValues.pop())
-        
-        self.conn.close()
-        print("Connection closed")
