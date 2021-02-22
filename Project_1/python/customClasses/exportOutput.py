@@ -274,25 +274,36 @@ class ExcelExport:
 class SQLExport:
     def __init__(self):
         self.__path = "./Project_1/python/output/sql_export/"
-        conn = sqlite3.connect(self.__path + "dataSource.db")
         
-        c = conn.cursor()
+        self.conn = sqlite3.connect(self.__path + "dataSource.db")
+        self.c = self.conn.cursor()
+
+        #creating the tables
+        self.createTables()
+
+        #inserting the default values into the tables
+        self.oneColumnSettings()
+        
+        self.conn.commit()
+        self.conn.close()
+
+    def createTables(self):
         #create Cost Centres table
-        c.execute('''CREATE TABLE IF NOT EXISTS costCente(
+        self.c.execute('''CREATE TABLE IF NOT EXISTS costCente(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             description TEXT
             );
         ''')
 
          #create Income Categories table
-        c.execute('''CREATE TABLE IF NOT EXISTS incomeCategories(
+        self.c.execute('''CREATE TABLE IF NOT EXISTS incomeCategories(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             description TEXT
             );
         ''')
 
         #create Expenditure Categories table
-        c.execute('''CREATE TABLE IF NOT EXISTS expenditureCategories(
+        self.c.execute('''CREATE TABLE IF NOT EXISTS expenditureCategories(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             type TEXT,
             classification TEXT,
@@ -303,7 +314,7 @@ class SQLExport:
         );''')
 
         #create User Data table
-        c.execute('''CREATE TABLE IF NOT EXISTS userData(
+        self.c.execute('''CREATE TABLE IF NOT EXISTS userData(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT,
             type TEXT,
@@ -314,6 +325,13 @@ class SQLExport:
             amount REAL
         );''')
 
-        conn.commit()
-        conn.close()
+    def oneColumnSettings(self):
+        #Creating the connection and the cursor
+        #self.conn
+        #self.c
 
+        #commiting and closing the database
+        #self.conn.commit()
+        #self.conn.close()
+        pass
+        
