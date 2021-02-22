@@ -274,8 +274,9 @@ class ExcelExport:
 class SQLExport:
     def __init__(self):
         self.__path = "./Project_1/python/output/sql_export/"
-        self.ccList = ccList
-
+        conn = sqlite3.connect(self.__path + "dataSource.db")
+        
+        c = conn.cursor()
         #create Cost Centres table
         c.execute('''CREATE TABLE IF NOT EXISTS costCente(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -312,10 +313,7 @@ class SQLExport:
             description TEXT,
             amount REAL
         );''')
-        conn.commit
 
-        #print(listOfValues.pop())
-        
+        conn.commit()
         conn.close()
-        print("Connection closed")
 
