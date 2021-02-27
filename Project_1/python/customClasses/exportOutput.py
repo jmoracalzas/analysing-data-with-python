@@ -272,8 +272,9 @@ class ExcelExport:
         wb.save(self.__path + "dataset.xlsx")
 
 class SQLExport:
-    def __init__(self):
+    def __init__(self, ccList):
         self.__path = "./Project_1/python/output/sql_export/"
+        self.ccList = ccList
         
         self.conn = sqlite3.connect(self.__path + "dataSource.db")
         self.c = self.conn.cursor()
@@ -282,7 +283,7 @@ class SQLExport:
         self.createTables()
 
         #inserting the default values into the tables
-        self.oneColumnSettings()
+        self.oneColumnSettings(self.ccList)
         
         self.conn.commit()
         self.conn.close()
@@ -325,11 +326,12 @@ class SQLExport:
             amount REAL
         );''')
 
-    def oneColumnSettings(self):
+    def oneColumnSettings(self,cc):
         #Creating the connection and the cursor
         #self.conn
         #self.c
-
+        print("Hello world!")
+        print(cc)
         #commiting and closing the database
         #self.conn.commit()
         #self.conn.close()
