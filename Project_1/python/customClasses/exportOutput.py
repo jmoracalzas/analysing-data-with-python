@@ -290,7 +290,7 @@ class SQLExport:
 
     def createTables(self):
         #create Cost Centres table
-        self.c.execute('''CREATE TABLE IF NOT EXISTS costCente(
+        self.c.execute('''CREATE TABLE IF NOT EXISTS costCentre(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             description TEXT
             );
@@ -326,14 +326,9 @@ class SQLExport:
             amount REAL
         );''')
 
-    def oneColumnSettings(self,cc):
-        #Creating the connection and the cursor
-        #self.conn
-        #self.c
-        print("Hello world!")
-        print(cc)
-        #commiting and closing the database
-        #self.conn.commit()
-        #self.conn.close()
-        pass
+    def oneColumnSettings(self, cc):
+        #creating a list of tuples
+        ccInsert = [(cc[item],) for item in range(len(cc))]
         
+        #interting the list of tuples into the table
+        self.c.executemany('INSERT INTO costCentre VALUES (null, ?);',ccInsert)
