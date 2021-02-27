@@ -272,9 +272,10 @@ class ExcelExport:
         wb.save(self.__path + "dataset.xlsx")
 
 class SQLExport:
-    def __init__(self, ccList):
+    def __init__(self, ccList, incList):
         self.__path = "./Project_1/python/output/sql_export/"
         self.ccList = ccList
+        self.incList = incList
         
         self.conn = sqlite3.connect(self.__path + "dataSource.db")
         self.c = self.conn.cursor()
@@ -282,9 +283,13 @@ class SQLExport:
         #creating the tables
         self.createTables()
 
-        #inserting the default values into the tables
-        self.oneColumnSettings(self.ccList)
-        
+        #inserting the default values into the cc and income tables
+        table = 'costCentre'
+        self.singleColumnSettings(targetTable=table, cc=self.ccList)
+
+        table = 'incomeCategories'
+        self.singleColumnSettings(targetTable=table, cc=self.incList)
+
         self.conn.commit()
         self.conn.close()
 
@@ -326,9 +331,10 @@ class SQLExport:
             amount REAL
         );''')
 
-    def oneColumnSettings(self, cc):
+    def singleColumnSettings(self,targetTable,cc):
         #creating a list of tuples
-        ccInsert = [(cc[item],) for item in range(len(cc))]
-        
+        valuesInsert = [(cc[item],) for item in range(len(cc))]
+
         #interting the list of tuples into the table
-        self.c.executemany('INSERT INTO costCentre VALUES (null, ?);',ccInsert)
+        query = 'INSERT INTO {} VALUES (null, ?);'.format(targetTable)
+        self.c.executemany(query,valuesInsert)
