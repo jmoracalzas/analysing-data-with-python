@@ -296,7 +296,7 @@ class GuiWindow:
 
             # SQLite3 export
             if self.choiceSQLExport.get():
-                sqlExport = SQLExport(self.ccList, self.incList)
+                sqlExport = SQLExport(self.ccList, self.incList, self.userData)
         else:
             messagebox.showinfo(
                 title="Export data",

@@ -272,10 +272,11 @@ class ExcelExport:
         wb.save(self.__path + "dataset.xlsx")
 
 class SQLExport:
-    def __init__(self, ccList, incList):
+    def __init__(self, ccList, incList, userDataList):
         self.__path = "./Project_1/python/output/sql_export/"
         self.ccList = ccList
         self.incList = incList
+        self.userData = userDataList
         
         self.conn = sqlite3.connect(self.__path + "dataSource.db")
         self.c = self.conn.cursor()
@@ -289,6 +290,8 @@ class SQLExport:
 
         table = 'incomeCategories'
         self.singleColumnSettings(targetTable=table, cc=self.incList)
+
+        self.multiColumnSettings(userData=self.userData)
 
         self.conn.commit()
         self.conn.close()
@@ -338,3 +341,11 @@ class SQLExport:
         #interting the list of tuples into the table
         query = 'INSERT INTO {} VALUES (null, ?);'.format(targetTable)
         self.c.executemany(query,valuesInsert)
+
+    def multiColumnSettings(self, userData):
+        insertUserData = [
+            (userData[item].replace("\t",","),) for item in range(len(userData))
+            ]
+            
+        print(insertUserData)
+        
