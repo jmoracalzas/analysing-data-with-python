@@ -271,59 +271,79 @@ class ExcelExport:
         # saving the file
         wb.save(self.__path + "dataset.xlsx")
 
+
 class SQLExport:
-    def __init__(self, ccList, incList, userDataList):
+    def __init__(self, ccList, incList, expDict, userDataList):
         self.__path = "./Project_1/python/output/sql_export/"
         self.ccList = ccList
         self.incList = incList
         self.userData = userDataList
-        
+        self.expDict = expDict
+
         self.conn = sqlite3.connect(self.__path + "dataSource.db")
         self.c = self.conn.cursor()
 
-        #creating the tables
+        # creating the tables
         self.createTables()
 
-        #inserting the default values into the cc and income tables
-        table = 'costCentre'
+        # inserting the default values into the cc and income tables
+        table = "costCentre"
         self.singleColumnSettings(targetTable=table, cc=self.ccList)
 
-        table = 'incomeCategories'
+        table = "incomeCategories"
         self.singleColumnSettings(targetTable=table, cc=self.incList)
 
-        self.multiColumnSettings(userData=self.userData)
+        # inserting the default values into the userData
+        table = "userData"
+        columns = "(null," + 6 * " ?, " + "?)"
+        self.insertUserData(
+            targetTable=table, noColumns=columns, userData=self.userData
+        )
+
+        # inserting the default values into the userData
+        table = "expenditureCategories"
+        columns = "(null," + 6 * " ?, " + "?)"
+        self.insertExpData(targetTable=table, noColumns=columns, expDict=self.expDict)
 
         self.conn.commit()
         self.conn.close()
 
     def createTables(self):
-        #create Cost Centres table
-        self.c.execute('''CREATE TABLE IF NOT EXISTS costCentre(
+        # create Cost Centres table
+        self.c.execute(
+            """CREATE TABLE IF NOT EXISTS costCentre(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             description TEXT
             );
-        ''')
+        """
+        )
 
-         #create Income Categories table
-        self.c.execute('''CREATE TABLE IF NOT EXISTS incomeCategories(
+        # create Income Categories table
+        self.c.execute(
+            """CREATE TABLE IF NOT EXISTS incomeCategories(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             description TEXT
             );
-        ''')
+        """
+        )
 
-        #create Expenditure Categories table
-        self.c.execute('''CREATE TABLE IF NOT EXISTS expenditureCategories(
+        # create Expenditure Categories table
+        self.c.execute(
+            """CREATE TABLE IF NOT EXISTS expenditureCategories(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             type TEXT,
             classification TEXT,
             percSales REAL,
-            perProduction REAL,
-            perAdmin REAL,
+            percDistribution REAL,
+            percProduction REAL,
+            percAdmin REAL,
             max_Cost REAL
-        );''')
+        );"""
+        )
 
-        #create User Data table
-        self.c.execute('''CREATE TABLE IF NOT EXISTS userData(
+        # create User Data table
+        self.c.execute(
+            """CREATE TABLE IF NOT EXISTS userData(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             date TEXT,
             type TEXT,
@@ -332,20 +352,30 @@ class SQLExport:
             costCentre TEXT,
             description TEXT,
             amount REAL
-        );''')
+        );"""
+        )
 
-    def singleColumnSettings(self,targetTable,cc):
-        #creating a list of tuples
+    def singleColumnSettings(self, targetTable, cc):
+        # creating a list of tuples
         valuesInsert = [(cc[item],) for item in range(len(cc))]
 
-        #interting the list of tuples into the table
-        query = 'INSERT INTO {} VALUES (null, ?);'.format(targetTable)
-        self.c.executemany(query,valuesInsert)
+        # interting the list of tuples into the table
+        query = "INSERT INTO {} VALUES (null, ?);".format(targetTable)
+        self.c.executemany(query, valuesInsert)
 
-    def multiColumnSettings(self, userData):
+    def insertUserData(self, targetTable, noColumns, userData):
+        # creating the list of tuples to insert into the table
         insertUserData = [
-            (userData[item].replace("\t",","),) for item in range(len(userData))
-            ]
-            
-        print(insertUserData)
-        
+            tuple(userData[item].split("\t", 6)) for item in range(len(userData))
+        ]
+        # inserting the list of tuples into the table
+        query = "INSERT INTO {0} VALUES {1};".format(targetTable, noColumns)
+        self.c.executemany(query, insertUserData)
+
+    def insertExpData(self, targetTable, noColumns, expDict):
+        # creating the list of tuples to insert into the table
+        valuesInsert = [tuple([key] + expDict[key]) for key in expDict]
+
+        # inserting the list of tuples into the table
+        query = "INSERT INTO {0} VALUES {1};".format(targetTable, noColumns)
+        self.c.executemany(query, valuesInsert)

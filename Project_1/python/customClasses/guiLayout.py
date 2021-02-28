@@ -39,7 +39,9 @@ class GuiWindow:
 
         # creating the menuFrame content
         self.settingsButton = ttk.Button(
-            self.menuFrame, text="Settings", command=self.userInputCallBack,
+            self.menuFrame,
+            text="Settings",
+            command=self.userInputCallBack,
         )
         self.settingsButton.pack(pady=10)
 
@@ -69,7 +71,8 @@ class GuiWindow:
 
         self.basicSettings = ttk.Frame(self.settingsDisplay)
         self.settingsDisplay.add(
-            self.basicSettings, text="Basic Settings",
+            self.basicSettings,
+            text="Basic Settings",
         )
 
         self.dataTypeSet = ttk.Frame(self.settingsDisplay)
@@ -115,7 +118,8 @@ class GuiWindow:
         self.yearsEntered = StringVar()
 
         self.yearsInput = ttk.Entry(
-            self.basicSettings, textvariable=self.yearsEntered,
+            self.basicSettings,
+            textvariable=self.yearsEntered,
         ).grid(row=0, column=1)
 
         # Income section
@@ -193,11 +197,11 @@ class GuiWindow:
             self.outputTypeGroup, text="Microsoft Excel", variable=self.choiceXLSExport
         ).pack(padx=10, pady=5, anchor="w")
 
-        # .SQLITE export option        
+        # .SQLITE export option
         self.choiceSQLExport = BooleanVar()
-        ttk.Checkbutton(self.outputTypeGroup, text="SQLite", variable=self.choiceSQLExport).pack(
-            padx=10, pady=5, anchor="w"
-        )
+        ttk.Checkbutton(
+            self.outputTypeGroup, text="SQLite", variable=self.choiceSQLExport
+        ).pack(padx=10, pady=5, anchor="w")
 
         ############################################################################
         # Determining the data type to generate
@@ -296,7 +300,9 @@ class GuiWindow:
 
             # SQLite3 export
             if self.choiceSQLExport.get():
-                sqlExport = SQLExport(self.ccList, self.incList, self.userData)
+                sqlExport = SQLExport(
+                    self.ccList, self.incList, self.expDict, self.userData
+                )
         else:
             messagebox.showinfo(
                 title="Export data",
