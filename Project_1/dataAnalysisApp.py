@@ -11,8 +11,8 @@ def main():
     # Generating the GUI and setting up its properties
     root = Tk()
 
-    root.geometry("600x280+25+25")
-    # root.resizable(False, False)
+    root.geometry("600x290+25+25")
+    root.resizable(False, False)
     root.title("Project 1: Data Generation and Data Export")
 
     welcomeWin = GuiWindow(root)
