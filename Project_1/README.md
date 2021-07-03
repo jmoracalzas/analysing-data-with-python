@@ -1,7 +1,7 @@
-# Project 1: Analysing data with Python 3 and Microsoft Excel  
+# Project 1: Generating data with Python 3
 
 ## Introduction <br />
-This projects was designed to facilitate learning activities. It focuses on utilising basic programming techniques to implement input, output, control flow, GUI development and finally integrating Python 3 and Microsoft Excel.
+This project was designed to facilitate learning activities. It focuses on utilising basic programming techniques to implement input, output, control flow and GUI development with Python 3.
 
 ## Stages <br />
 1. *Generation of data*<br />
@@ -10,13 +10,9 @@ This part of the project focuses on generating some sample data that will be man
 2. *Creation of a basic GUI* <br />
 This section of the project will be used to explore the Tkinter module to create a basic GUI.
 
-3. *An introduction to Python 3 and Microsoft Excel* <br />
-This final block of the project will be an introduction to manipulating data in Python 3 and exporting the output on to Microsoft Excel.
-
 ## Tools and programming languages <br />
 1. Python 3
-2. Python libraries: Python Standard Library (random), Tkinter, Openpyxl
-3. Microsoft Excel and text files
+2. Python libraries: Python Standard Library (random) and Tkinter.
 
 ## Status
 |**Element**                    |**Main Script**       |**User Interface**|
@@ -28,7 +24,7 @@ This final block of the project will be an introduction to manipulating data in 
 |Customisation of user settings |Pending               |Pending           |
 |Code optimisation              |In progress           |Not applicable    |
 
-Output creation will consist of: .txt export (complete), .csv export (pending),  .xml (pending), .json (pending), Microsoft Excel export (complete) and SQLite (pending).
+Output creation will consist of: .txt export (complete), .csv export (pending),  .xml (pending), .json (pending) and SQLite (pending).
 
 ## Documentation <br />
 ### Requirements
