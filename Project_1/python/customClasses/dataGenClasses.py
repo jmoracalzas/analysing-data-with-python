@@ -24,7 +24,7 @@ class Rules:
         "Administration",
     ]
 
-    # used to determine the total number of lines to generate
+    # use to determine the total number of lines to generate
     # and to hold the basic categories needed to generate data
     def __init__(self, years, incLines, expLines, infoType):
         self.__setNoYears = years
@@ -55,12 +55,11 @@ class Rules:
                     + str(i + 1)
                     + "-"
                     + str(self.startDate.day)
-
-                    #str(self.startDate.day)
-                    #+ "/"
-                    #+ str(i + 1)
-                    #+ "/"
-                    #+ str((self.startDate - timedelta(days=365 * j)).year)
+                    # str(self.startDate.day)
+                    # + "/"
+                    # + str(i + 1)
+                    # + "/"
+                    # + str((self.startDate - timedelta(days=365 * j)).year)
                     for i in range(12)
                 ]
                 for j in range(self.__setNoYears)
@@ -131,7 +130,10 @@ class interimData(Rules):
 
         # creating a list of variable expenditure
         varExpItems = list(
-            filter(lambda elem: elem[1][0] == "variable", self.expenditureType.items(),)
+            filter(
+                lambda elem: elem[1][0] == "variable",
+                self.expenditureType.items(),
+            )
         )
 
         for i in self.generateReportingDates():
